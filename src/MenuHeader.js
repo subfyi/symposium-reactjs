@@ -3,8 +3,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {Link} from "react-router-dom";
 import {useUser} from "./Components/UserProvider";
 import {useAuth, useApp} from "react-admin-base";
-import {Header, LanguageSwitcher} from 'react-admin-base-adminkit';
-import {ThemePart} from "./themes/ThemeConfig";
+import {Header} from 'react-admin-base-adminkit';
 
 function UserPart() {
     const user = useUser();
@@ -25,7 +24,7 @@ function UserPart() {
 
     return <Dropdown isOpen={show} toggle={() => setShow(!show)}>
         <DropdownToggle nav caret>
-            Hello, <b>{user.name}</b>
+            Hello, <b>{user.name + user.surname}</b>
         </DropdownToggle>
         <DropdownMenu right>
             <DropdownItem tag={Link} to="/profile">Profile</DropdownItem>
@@ -41,10 +40,15 @@ export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
     const app = useApp();
 
     return <Header>
-        {!leftMenuOpen && <Link to="/"><img src={app.logo} alt={app.name} className="brand-image text-white mr-3"/></Link>}
-        <span className="sidebar-toggle d-flex" onClick={toggleLeftMenu}>
+        {!leftMenuOpen && <img src={app.logo} alt={app.name} className="brand-image text-white mr-3"/>}
+        <a className="sidebar-toggle d-flex" onClick={toggleLeftMenu}>
             <i className="hamburger align-self-center "/>
-        </span>
+        </a>
+        {leftMenuOpen ?
+            <a className="extra-sidebar-toggle" onClick={toggleLeftMenu}></a> :
+            <a className="extra-sidebar-toggle-closed" onClick={toggleLeftMenu}></a>
+        }
+
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/" target="_blank" rel="noreferrer">
             Home
         </a>
@@ -52,7 +56,7 @@ export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
             Documents
         </a>
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/documents-all" target="_blank" rel="noreferrer">
-            Old Symposiums
+            Previous Documents
         </a>
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/contact" target="_blank" rel="noreferrer">
             Contact
@@ -60,9 +64,7 @@ export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
 
         <div className="navbar-collapse collapse">
             <ul className="navbar-nav navbar-align">
-                <LanguageSwitcher/>
                 <UserPart/>
-                <ThemePart/>
             </ul>
         </div>
     </Header>;

@@ -1,8 +1,8 @@
 import "react-admin-base-adminkit/assets/app.css";
 import './App.scss';
 
-import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider} from 'react-admin-base';
-import {MainLayout, Login, Reset, LanguageProvider} from 'react-admin-base-adminkit';
+import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, useAuth} from 'react-admin-base';
+import {MainLayout, Reset, LanguageProvider, Login} from 'react-admin-base-adminkit';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
 import MenuHeader from "./MenuHeader";
@@ -12,7 +12,6 @@ import UploadConfig from "./UploadConfig";
 import 'react-dates/initialize';
 import 'react-dates/lib/css/_datepicker.css';
 import languageEn from './i18n/en.json';
-import ThemeProvider from "./themes/ThemeConfig";
 
 const languages = {
     en: {
@@ -27,12 +26,11 @@ function BaseApp() {
         <App
             id="iseser"
             name="ISESER PORTAL"
+            logo="/logo.png"
             endpoint={process.env.REACT_APP_ENDPOINT}
-            logo="/logo.svg"
         >
             <LanguageProvider defaultLanguage="en" languages={languages}>
-                <ThemeProvider tid="iseser">
-                    <AuthProvider
+                            <AuthProvider
                         tokenEndpoint="/oauth/token"
                         client_id="2"
                         client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
@@ -58,7 +56,6 @@ function BaseApp() {
                             </UserProvider>
                         </Authorized>
                     </AuthProvider>
-                </ThemeProvider>
             </LanguageProvider>
         </App>
     );

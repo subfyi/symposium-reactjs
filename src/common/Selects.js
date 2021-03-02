@@ -11,3 +11,16 @@ export function JournalSelect(props) {
         { row => <>{row.slug}</> }
     </ApiSelect>;
 }
+
+
+
+export function ParameterSelect(props) {
+    const { ptur, type } = props;
+
+    return <ApiSelect {...props} url={`/api/parameters${(ptur && `-${ptur}`) || ''}/${type}`} nameKey="value" />;
+}
+
+
+export function AuthoritySelect(props) {
+    return <ApiSelect {...props} url="/api/roles" />;
+}

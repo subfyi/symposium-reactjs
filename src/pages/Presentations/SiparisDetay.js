@@ -5,11 +5,6 @@ import SingleFilePicker from '../../upload/SingleFilePicker';
 
 import Moment from 'react-moment';
 
-import { Card, CardBody, CardHeader  } from '../../../_metronic/_partials/controls';
-import CKEditor from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import {tokenized} from "../../api";
-
 class CustomPanel extends Component {
     state = {on: true};
 
@@ -76,7 +71,7 @@ export default class SiparisDetay extends Component {
                                             this.props.onSave();
                                         }}>Edit</Button>
                                     </ButtonGroup> : <ButtonGroup>
-                                        { (row.user.id == this.state.user.id || this.state.user.role.id >= 8) && <Button color="warning" size="sm"  onClick={a => this.setState({editingRow: row})}>Edit</Button>}
+                                        { (row.user.id == this.state.user.id || this.state.user.yetki >= 8) && <Button color="warning" size="sm"  onClick={a => this.setState({editingRow: row})}>Edit</Button>}
                                     </ButtonGroup>}
                                 </td>
                             </tr>
