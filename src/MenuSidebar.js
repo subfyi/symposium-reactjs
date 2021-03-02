@@ -18,8 +18,8 @@ export default injectIntl(function MenuSidebar() {
 
         <MenuGroup title="Settings">
             <Menu title={"Users"} to="/user" icon="fas fa-users"/>
+            <Menu title={"Roles"} to="/roles" icon="fas fa-magic"/>
             <Menu title={"Profile"} to="/profile" icon="fas fa-user"/>
         </MenuGroup>
-
     </Sidebar>;
 });

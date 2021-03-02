@@ -1,23 +1,11 @@
 import React, {Component} from 'react';
 import {
-    Badge,
-    Card,
     Input,
-    CardBody,
-    CardHeader,
-    Col,
-    Pagination,
-    PaginationItem,
-    PaginationLink,
-    Row,
-    Table,
-    InputGroup, InputGroupAddon, InputGroupText, Form, FormGroup, Label
+    Col,FormGroup, Label
 } from 'reactstrap';
 
 import CommonForm from '../../common/GenelForm';
-import YetkiSelect from '../../common/YetkiSelect';
-import TakipciSelect from '../../common/TakipciSelect';
-import Validator from '../../common/Validator';
+import {Validator} from "react-admin-base-adminkit";
 
 class Edit extends Component {
     constructor(props) {
@@ -88,18 +76,6 @@ class Edit extends Component {
                                     <Input type="text" value={controller.state.iletisim}
                                            onChange={a => controller.setState({iletisim: a.currentTarget.value})}/>
                                 </Validator>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Takipçisi</Label>
-                            </Col>
-                            <Col xs="12" md="9">
-                                <TakipciSelect
-                                    value={controller.state.id}
-                                    cachedValue={controller.state.value}
-                                    onChange={value => controller.setState({value: value})}
-                                />
                             </Col>
                         </FormGroup>
                         <FormGroup row>

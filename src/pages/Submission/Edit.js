@@ -42,7 +42,7 @@ export default function EditCreate({match}) {
             <Card>
                 <CardBody>
 
-                    {data.video && user && user.yetki >= 8 && <FormGroup row>
+                    {data.video && user && user.role >= 8 && <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Video Approved</Label>
                         </Col>
@@ -60,7 +60,7 @@ export default function EditCreate({match}) {
                         </Col>
                     </FormGroup>}
 
-                    {user.yetki >= 8 && <FormGroup row>
+                    {user.role >= 8 && <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Paper Approved</Label>
                         </Col>
@@ -74,7 +74,7 @@ export default function EditCreate({match}) {
                         </Col>
                     </FormGroup>}
 
-                    {user.yetki >= 8 && <FormGroup row>
+                    {user.role >= 8 && <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">title_year</Label>
                         </Col>
@@ -94,7 +94,7 @@ export default function EditCreate({match}) {
                                 type="required"
                                 >
                                 <Input type="text"
-                                       disabled={!!data.paper_approved && !(user.yetki >= 8)}
+                                       disabled={!!data.paper_approved && !(user.role >= 8)}
                                        value={data.en_title}
                                        onChange={a => setData({
                                            en_title: a.currentTarget.value
@@ -113,7 +113,7 @@ export default function EditCreate({match}) {
                                 >
                                 <Input type="textarea"
                                        rows="10"
-                                       disabled={!!data.paper_approved && !(user.yetki >= 8)}
+                                       disabled={!!data.paper_approved && !(user.role >= 8)}
                                        value={data.en_abstract}
                                        onChange={a => setData({en_abstract: a.currentTarget.value})}/>
                             </Validator>
@@ -178,7 +178,7 @@ export default function EditCreate({match}) {
                         </Col>
                         <Col xs="12" md="9">
                             <SingleFilePicker
-                                disabled={!(user.yetki >= 8)}
+                                disabled={!(user.role >= 8)}
                                 value={data.abstract_dosya}
                                 onChange={a => setData({abstract_dosya: a})}
                             />
@@ -195,7 +195,7 @@ export default function EditCreate({match}) {
                                 type="file"
                                 >
                                 <SingleFilePicker
-                                    disabled={!(user.yetki >= 8)}
+                                    disabled={!(user.role >= 8)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -214,7 +214,7 @@ export default function EditCreate({match}) {
                                 type="file"
                                 >
                                 <SingleFilePicker
-                                    disabled={!(user.yetki >= 8)}
+                                    disabled={!(user.role >= 8)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
                                 />
@@ -227,7 +227,7 @@ export default function EditCreate({match}) {
                         </Col>
                         <Col xs="12" md="9">
                             <GDriveSingleFilePicker
-                                disabled={!(user.yetki >= 8)}
+                                disabled={!(user.role >= 8)}
                                 accepts="video/mp4,application/pdf"
                                 value={data.video}
                                 onChange={a => setData({video: a})}

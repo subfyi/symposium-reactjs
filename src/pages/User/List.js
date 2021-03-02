@@ -39,7 +39,7 @@ export default function ProductTypeList() {
                             <td>{row.surname}</td>
                             <td>{row.email}</td>
                             <Actions
-                                edit={"/user/" + row.id}
+                                edit={"/user/" + row.id + "/edit"}
                                 del={"/user/" + row.id}
                             />
                         </tr>

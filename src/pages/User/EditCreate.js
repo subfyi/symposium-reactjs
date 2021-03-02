@@ -1,122 +1,229 @@
 import React from 'react';
-import {EntityEditor} from 'react-admin-base-adminkit';
-import {Card, CardBody, Col, Input, Label, Row} from "reactstrap";
+import {Card, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
 import {useEntity} from "react-admin-base";
+import {EntityEditor} from 'react-admin-base-adminkit';
 import {Breadcrumb} from 'react-admin-base-adminkit';
-import {Redirect} from 'react-router-dom';
 import {Validator} from 'react-admin-base-adminkit';
+import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
 import {useUser} from "../../Components/UserProvider";
-import {AuthoritySelect} from "../../common/Selects";
-
 
 export default function EditCreate({match}) {
     const id = match.params.id;
 
     const user = useUser();
-    const entity = useEntity('/api/user', id, { type: user.type });
+    const entity = useEntity('/api/kullanicilar', id, { role: user.role });
     const [data, setData] = entity;
 
-    if (!data) {
-        return null;
-    }
-
-    return <Breadcrumb
-        title="Kullanıcılar"
-        data={
-            [
-                {
-                    href: '/user',
-                    name: 'Kullanıcılar'
-                },
-                data.id && {
-                    href: '/user/' + data.id,
-                    name: data.first_name
-                },
-                !data.id && {
-                    href: '/user/create',
-                    name: 'Ekle'
-                }
-            ]
-        }
-    >
-        { data && data.id && +id !== +data.id && <Redirect to={"/user/" + data.id}/> }
+    return <>
+        <Breadcrumb
+            title="Profile"
+            data={
+                [
+                    {
+                        href: '/profil',
+                        name: 'Profile'
+                    }
+                ]
+            }
+        />
         <EntityEditor entity={entity}>
             <Card>
                 <CardBody>
-                <Row className="mb-3">
-                        <Col md="2">
-                            <Label htmlFor="text-input">name</Label>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Name</Label>
                         </Col>
-                        <Col md="4">
-                            <Validator name="name" type="required">
-                                <Input
-                                    type="text"
-                                    value={data.name}
-                                    onChange={a => setData({name: a.currentTarget.value})}
-                                />
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="name"
+                                type="required"
+                            >
+                                <Input type="text" value={data.name}
+                                       onChange={a => setData({name: a.currentTarget.value})}/>
                             </Validator>
                         </Col>
-                        <Col md="2">
-                            <Label htmlFor="text-input">surname</Label>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Surname</Label>
                         </Col>
-                        <Col md="4">
-                            <Validator name="surname" type="required">
-                                <Input
-                                    type="text"
-                                    value={data.surname}
-                                    onChange={a => setData({surname: a.currentTarget.value})}
-                                />
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="surname"
+                                type="required"
+                            >
+                                <Input type="text" value={data.surname}
+                                       onChange={a => setData({surname: a.currentTarget.value})}/>
                             </Validator>
                         </Col>
+                    </FormGroup>
 
-                </Row>
-                    <Row className="mb-3">
-                        <Col md="2">
-                            <Label htmlFor="text-input">email</Label>
+
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">E-Mail Address</Label>
                         </Col>
-                        <Col md="10">
-                            <Validator name="email" type="required">
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="email"
+                                type="required"
+                            >
                                 <Input type="text" value={data.email}
                                        onChange={a => setData({email: a.currentTarget.value})}/>
                             </Validator>
                         </Col>
-
-                    </Row>
-                    <Row className="mb-3">
-                        <Col md="2">
-                            <Label htmlFor="text-input">password</Label>
-                        </Col>
-                        <Col md="10">
-                            <Input
-                                type="password"
-                                value={data.password}
-                                autocomplete="new-password"
-                                onChange={a => setData({password: a.currentTarget.value})}
-                            />
-                        </Col>
-                    </Row>
-
-                    { user.yetki > 8 && <Row>
+                    </FormGroup>
+                    <FormGroup row>
                         <Col md="3">
-                            <Label htmlFor="text-input">Role</Label>
+                            <Label htmlFor="select">Title</Label>
                         </Col>
                         <Col xs="12" md="9">
                             <Validator
-                                name="role"
+                                name="u_title"
                                 type="required"
                             >
-                                <AuthoritySelect
-                                    url="/api/roles"
-                                    value={data.role}
-                                    onChange={a => setData({role: a})}
+                                <ParameterSelect
+                                    type="titlecon"
+                                    value={data.utitle}
+                                    onChange={a => setData({utitle: a})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="select">Type</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+
+                            <Validator
+                                name="u_type"
+                                type="required"
+                            >
+                                <ParameterSelect
+                                    type="materialcon"
+                                    value={data.utype}
+                                    onChange={a => setData({utype: a})}
                                 />
                             </Validator>
                         </Col>
-                    </Row>}
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="select">Gender
+                            </Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="gender"
+                                type="required"
+                            >
+                                <ParameterSelect
+                                    type="gender"
+                                    value={data.ugender}
+                                    onChange={a => setData({ugender: a})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
 
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Institution</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="institution"
+                                type="required"
+                            >
+                                <Input type="text" value={data.institution}
+                                       onChange={a => setData({institution: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
 
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Faculty</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="faculty"
+                                type="required"
+                            >
+                                <Input type="text" value={data.faculty}
+                                       onChange={a => setData({faculty: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Department</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="department"
+                                type="required"
+                            >
+                                <Input type="text" value={data.department}
+                                       onChange={a => setData({department: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Mobile / GSM </Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="iletisim"
+                                type="required"
+                            >
+                                <Input type="text" value={data.iletisim}
+                                       onChange={a => setData({iletisim: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Password</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Input type="password" value={data.password}
+                                   autocomplete="new-password"
+                                   onChange={a => setData({password: a.currentTarget.value})}/>
+                        </Col>
+                    </FormGroup>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Address :</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="address"
+                                type="required"
+                            >
+                                <Input type="text" value={data.address}
+                                       onChange={a => setData({address: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+
+                        { user.role > 8 && <Row>
+                            <Col md="3">
+                                <Label htmlFor="text-input">Role</Label>
+                            </Col>
+                            <Col xs="12" md="9">
+                                <Validator
+                                    name="role"
+                                    type="required"
+                                >
+                                    <AuthoritySelect
+                                        value={data.role}
+                                        onChange={a => setData({role: a})}
+                                    />
+                                </Validator>
+                            </Col>
+                        </Row>}
                 </CardBody>
             </Card>
         </EntityEditor>
-    </Breadcrumb>;
+    </>;
 }

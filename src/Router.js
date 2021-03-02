@@ -7,6 +7,9 @@ import Profile from "./pages/Profile/Edit";
 import UserEC from "./pages/User/EditCreate";
 import User from "./pages/User/List";
 
+import RoleAdd from "./pages/Roles/Edit";
+import RoleList from "./pages/Roles/List";
+
 import PresentationOral from "./pages/Presentations/Orals";
 import PresentationPoster from "./pages/Presentations/Posters";
 import WatchPresentation from "./pages/Presentations/Watch";
@@ -49,33 +52,37 @@ export default function Router() {
         <Route path="/presentation/oral" component={PresentationOral}/>
         <Route path="/presentation/poster" component={PresentationPoster}/>
 
-        <Route path="/author/:id/edit" component={AuthorEdit}/>
-        <Route path="/author/create" component={AuthorEdit}/>
-        <Route path="/author" component={Author}/>
+        {user.role >= 8 && <Route path="/author/:id/edit" component={AuthorEdit}/>}
+        {user.role >= 8 && <Route path="/author/create" component={AuthorEdit}/>}
+        {user.role >= 8 && <Route path="/author" component={Author}/>}
 
-        <Route path="/citation/:id/edit" component={CitationsEdit}/>
-        <Route path="/citation/create" component={CitationsEdit}/>
-        <Route path="/citation" component={Citations}/>
+        {user.role >= 8 && <Route path="/citation/:id/edit" component={CitationsEdit}/>}
+        {user.role >= 8 && <Route path="/citation/create" component={CitationsEdit}/>}
+        {user.role >= 8 && <Route path="/citation" component={Citations}/>}
 
-        <Route path="/keyword/:id/edit" component={KeywordsEdit}/>
-        <Route path="/keyword/create" component={KeywordsEdit}/>
-        <Route path="/keyword" component={Keywords}/>
+        {user.role >= 8 && <Route path="/keyword/:id/edit" component={KeywordsEdit}/>}
+        {user.role >= 8 && <Route path="/keyword/create" component={KeywordsEdit}/>}
+        {user.role >= 8 && <Route path="/keyword" component={Keywords}/>}
 
-        <Route path="/language/:id/edit" component={LanguagesEdit}/>
-        <Route path="/language/create" component={LanguagesEdit}/>
-        <Route path="/language" component={Languages}/>
+        {user.role >= 8 && <Route path="/language/:id/edit" component={LanguagesEdit}/>}
+        {user.role >= 8 && <Route path="/language/create" component={LanguagesEdit}/>}
+        {user.role >= 8 && <Route path="/language" component={Languages}/>}
 
-        <Route path="/publisher/:id/edit" component={PublishersEdit}/>
-        <Route path="/publisher/create" component={PublishersEdit}/>
-        <Route path="/publisher" component={Publishers}/>
+        {user.role >= 8 && <Route path="/publisher/:id/edit" component={PublishersEdit}/>}
+        {user.role >= 8 && <Route path="/publisher/create" component={PublishersEdit}/>}
+        {user.role >= 8 && <Route path="/publisher" component={Publishers}/>}
 
-        <Route path="/subject/:id/edit" component={SubjectsEdit}/>
-        <Route path="/subject/create" component={SubjectsEdit}/>
-        <Route path="/subject" component={Subjects}/>
+        {user.role >= 8 && <Route path="/subject/:id/edit" component={SubjectsEdit}/>}
+        {user.role >= 8 && <Route path="/subject/create" component={SubjectsEdit}/>}
+        {user.role >= 8 && <Route path="/subject" component={Subjects}/>}
 
-        { user.yetki >= 8 && <Route path="/user/create" component={UserEC}/>}
-        { user.yetki >= 8 && <Route path="/user/:id" component={UserEC}/>}
-        { user.yetki >= 8 && <Route path="/user" component={User}/>}
+        {user.role >= 8 &&  <Route path="/roles/:id/edit" component={RoleAdd}/>}
+        {user.role >= 8 && <Route path="/roles/create" component={RoleAdd}/>}
+        {user.role >= 8 && <Route path="/roles" component={RoleList}/>}
+
+        {user.role >= 8 && <Route path="/user/create" component={UserEC}/>}
+        {user.role >= 8 && <Route path="/user/:id/edit" component={UserEC}/>}
+        {user.role >= 8 && <Route path="/user" component={User}/>}
 
         <Route path="/profile" component={Profile}/>
 

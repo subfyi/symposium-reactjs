@@ -71,7 +71,7 @@ export default class SiparisDetay extends Component {
                                             this.props.onSave();
                                         }}>Edit</Button>
                                     </ButtonGroup> : <ButtonGroup>
-                                        { (row.user.id == this.state.user.id || this.state.user.yetki >= 8) && <Button color="warning" size="sm"  onClick={a => this.setState({editingRow: row})}>Edit</Button>}
+                                        { (row.user.id == this.state.user.id || this.state.user.role >= 8) && <Button color="warning" size="sm"  onClick={a => this.setState({editingRow: row})}>Edit</Button>}
                                     </ButtonGroup>}
                                 </td>
                             </tr>

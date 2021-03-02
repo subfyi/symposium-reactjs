@@ -4,7 +4,7 @@ import {useEntity} from "react-admin-base";
 import {EntityEditor} from 'react-admin-base-adminkit';
 import {Breadcrumb} from 'react-admin-base-adminkit';
 import {Validator} from 'react-admin-base-adminkit';
-import {ParameterSelect} from "../../common/Selects";
+import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
 
 export default function Edit() {
     const entity = useEntity('/api/user', 'me');
@@ -33,7 +33,7 @@ export default function Edit() {
                             <Validator
                                 name="name"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.name}
                                        onChange={a => setData({name: a.currentTarget.value})}/>
                             </Validator>
@@ -45,7 +45,7 @@ export default function Edit() {
                             <Validator
                                 name="surname"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.surname}
                                        onChange={a => setData({surname: a.currentTarget.value})}/>
                             </Validator>
@@ -61,7 +61,7 @@ export default function Edit() {
                             <Validator
                                 name="email"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.email}
                                        onChange={a => setData({email: a.currentTarget.value})}/>
                             </Validator>
@@ -79,7 +79,7 @@ export default function Edit() {
                                 <ParameterSelect
                                     type="titlecon"
                                     value={data.utitle}
-                                    onChange={a => setData({utitle: a})} />
+                                    onChange={a => setData({utitle: a})}/>
                             </Validator>
                         </Col>
                     </FormGroup>
@@ -95,8 +95,8 @@ export default function Edit() {
                             >
                                 <ParameterSelect
                                     type="materialcon"
-                                    value={data.u_type}
-                                    onChange={a => setData({u_type: a})}
+                                    value={data.utype}
+                                    onChange={a => setData({utype: a})}
                                 />
                             </Validator>
                         </Col>
@@ -113,9 +113,8 @@ export default function Edit() {
                             >
                                 <ParameterSelect
                                     type="gender"
-                                    cachedValue={data.genderdata}
-                                    value={data.gender}
-                                    onChange={a => setData({gender: a})} />
+                                    value={data.ugender}
+                                    onChange={a => setData({ugender: a})}/>
                             </Validator>
                         </Col>
                     </FormGroup>
@@ -128,7 +127,7 @@ export default function Edit() {
                             <Validator
                                 name="institution"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.institution}
                                        onChange={a => setData({institution: a.currentTarget.value})}/>
                             </Validator>
@@ -143,7 +142,7 @@ export default function Edit() {
                             <Validator
                                 name="faculty"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.faculty}
                                        onChange={a => setData({faculty: a.currentTarget.value})}/>
                             </Validator>
@@ -158,7 +157,7 @@ export default function Edit() {
                             <Validator
                                 name="department"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.department}
                                        onChange={a => setData({department: a.currentTarget.value})}/>
                             </Validator>
@@ -172,7 +171,7 @@ export default function Edit() {
                             <Validator
                                 name="iletisim"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.iletisim}
                                        onChange={a => setData({iletisim: a.currentTarget.value})}/>
                             </Validator>
@@ -196,12 +195,13 @@ export default function Edit() {
                             <Validator
                                 name="address"
                                 type="required"
-                                >
+                            >
                                 <Input type="text" value={data.address}
                                        onChange={a => setData({address: a.currentTarget.value})}/>
                             </Validator>
                         </Col>
                     </FormGroup>
+
                 </CardBody>
             </Card>
         </EntityEditor>
