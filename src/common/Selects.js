@@ -1,6 +1,9 @@
 import React from 'react';
 import {ApiSelect} from "react-admin-base-adminkit";
 
+export function AuthorSelect(props) {
+    return <ApiSelect {...props} url="/api/author" />;
+}
 
 export function ParameterSelect(props) {
     const { ptur, type } = props;

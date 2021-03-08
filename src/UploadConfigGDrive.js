@@ -2,6 +2,7 @@
 import React, { useCallback } from 'react';
 import {UploadProvider, useAuth} from "react-admin-base";
 import Axios from "axios";
+import uuid from 'uuid/v1';
 
 function cozunurluk_bul(blob) {
     return new Promise(function (resolve) {
@@ -28,41 +29,62 @@ function abortToAxiosAbort(abort) {
      */
 }
 
-export default function UploadConfig({ children }) {
+var fdosyasira = 0;
+
+export default function UploadConfigGDrive({ children }) {
     const [ api ] = useAuth();
 
     const uploader = useCallback(async function(name, blob, contentType, abort, progress) {
         abort = abortToAxiosAbort(abort);
 
+        var fsira = ++fdosyasira;
+
+        abort = abortToAxiosAbort(abort);
+
         try {
-            var form = new FormData();
-            form.append("dosya", blob, name);
+            var slug = uuid();
 
-            if(contentType.indexOf("image/") !== 0) {
-                var coz = await cozunurluk_bul(blob);
-                if(coz) {
-                    form.append("width", coz.width);
-                    form.append("height", coz.height);
-                }
-            }
+            var uploadResponse = await api.tokenized.post('/api/gupload', {
+                slug: slug,
+                filename: name,
+                contentType: contentType
+            }, {
+                cancelToken: abort
+            });
 
-            var data = await api.tokenized.post('/upload', form, {
-                onUploadProgress: progress && function(progressEvent) {
+            var data = uploadResponse.data;
+
+            await api.tokenized.put(data.upload_link, blob, {
+                onUploadProgress: function(progressEvent) {
                     progress(progressEvent.loaded / progressEvent.total);
                 },
                 cancelToken: abort
             });
 
-            let file = data.data;
+            var size = null;
 
-            file.access_url = process.env.REACT_APP_ENDPOINT.replace(/\/$/,'') + data.data.access_url;
+            if (contentType.indexOf("image/") === 0) {
+                size = await cozunurluk_bul(blob);
+            }
 
-            return file;
+            var uploadBitirResponse = await api.tokenized.post('/api/guploadbitti', {
+                file_id: data.file_id,
+                folder_id: data.folder_id,
+                realfilename: name,
+                filename: data.filename,
+                slug: slug,
+                width: (size && size.width) || null,
+                height: (size && size.height) || null,
+                sira: fsira,
+            }, {
+                cancelToken: abort
+            });
+
+            return uploadBitirResponse.data;
         } catch(e) {
             if(!Axios.isCancel(e)) {
                 console.error('Hata olustu, tekrar deneniyor..', e);
-
-                throw e;
+                //  return uploader(name, blob, contentType, abort, progress);
             } else {
                 console.log("Iptal edildi");
             }

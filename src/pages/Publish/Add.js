@@ -4,11 +4,9 @@ import {
     Label
 } from 'reactstrap';
 import CommonForm from '../../common/GenelForm';
-import Validator from '../../common/Validator';
+import { Validator } from 'react-admin-base-adminkit';
 import Switch from "@material-ui/core/Switch";
-import ParameterSelect from "../../common/ParameterSelect";
-import ApiSelect from "../../common/ApiSelect";
-
+import {ParameterSelect} from "../../common/Selects";
 
 class Add extends Component {
     render() {
@@ -43,9 +41,9 @@ class Add extends Component {
                             </Col>
                             <Col xs="12" md="9">
                                 <Validator type="required" name="lang" controller={controller}>
-                                    <ApiSelect
-                                        url="/api/typelanguage"
-                                        selected={controller.state.lang}
+                                    <ParameterSelect
+                                        type="uygulamacon"
+                                        value={controller.state.lang}
                                         onChange={a => controller.setState({lang: a})}
                                     />
                                 </Validator>

@@ -6,10 +6,9 @@ import {Breadcrumb} from 'react-admin-base-adminkit';
 import {Redirect} from 'react-router-dom';
 import {Validator} from 'react-admin-base-adminkit';
 import {useUser} from "../../Components/UserProvider";
-import ApiSelect from "../../common/ApiSelect";
-import ParameterSelect from "../../common/ParameterSelect";
-import MultiParameterSelect from "../../common/MultiParameterSelect";
-import GDriveSingleFilePicker from "../../Components/GDriveSingleFilePicker";
+import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
+import UploadConfigGDrive from "../../UploadConfigGDrive";
+import AuthorSelector from "./AuthorSelector";
 
 export default function EditCreate({match}) {
     const id = match.params.id;
@@ -129,9 +128,10 @@ export default function EditCreate({match}) {
                                 name="pap_keyword"
                                 type="required"
                                 >
-                                <MultiParameterSelect
+                                <ParameterSelect
+                                    isMulti
                                     type="tagcon"
-                                    selected={(data.pap_keyword || "").split('|').filter(a => a.length).map(a => ({
+                                    value={(data.pap_keyword || "").split('|').filter(a => a.length).map(a => ({
                                         value: a,
                                         label: a
                                     }))}
@@ -151,8 +151,8 @@ export default function EditCreate({match}) {
                                 >
                                 <ParameterSelect
                                     type="keywordcon"
-                                    value={data.pap_topic_p}
-                                    onChange={a => setData({pap_topic_p: a})}/>
+                                    value={data.topic}
+                                    onChange={a => setData({topic: a})}/>
                             </Validator>
                         </Col>
                     </FormGroup>
@@ -162,14 +162,12 @@ export default function EditCreate({match}) {
                         </Col>
                         <Col xs="12" md="9">
                             <Validator type="required" name="lang" >
-                                <ApiSelect
-                                    url="/api/typelanguage"
-                                    selected={data.lang}
-                                    onChange={a => setData({lang: a})}
+                                <ParameterSelect
+                                    type="uygulamacon"
+                                    value={data.parampre}
+                                    onChange={a => setData({parampre: a})}
                                 />
                             </Validator>
-
-
                         </Col>
                     </FormGroup>
                     <FormGroup row>
@@ -226,12 +224,14 @@ export default function EditCreate({match}) {
                             <Label htmlFor="text-input">Presentation File (.mp4)</Label>
                         </Col>
                         <Col xs="12" md="9">
-                            <GDriveSingleFilePicker
-                                disabled={!(user.role >= 8)}
-                                accepts="video/mp4,application/pdf"
-                                value={data.video}
-                                onChange={a => setData({video: a})}
-                            />
+                            <UploadConfigGDrive>
+                                <SingleFilePicker
+                                    disabled={!(user.role >= 8)}
+                                    accepts="video/mp4,application/pdf"
+                                    value={data.video}
+                                    onChange={a => setData({video: a})}
+                                />
+                            </UploadConfigGDrive>
                         </Col>
                     </FormGroup>
 
@@ -246,8 +246,8 @@ export default function EditCreate({match}) {
                                 >
                                 <ParameterSelect
                                     type="birimcon"
-                                    value={data.pap_type}
-                                    onChange={a => setData({pap_type: a})}/>
+                                    value={data.parampap}
+                                    onChange={a => setData({parampap: a})}/>
                             </Validator>
                         </Col>
                     </FormGroup>
@@ -263,7 +263,12 @@ export default function EditCreate({match}) {
 
                 </CardBody>
             </Card>
-
+            <Card>
+                <AuthorSelector
+                    value={data.authors}
+                    onChange={a => setData({ authors: a })}
+                />
+            </Card>
         </EntityEditor>
     </Breadcrumb>;
 }
