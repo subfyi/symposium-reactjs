@@ -1,6 +1,5 @@
-
 import React from 'react';
-import {Card, Table, Input, CustomInput, Button} from 'reactstrap';
+import {Input, CustomInput, Button} from 'reactstrap';
 import {AuthorSelect} from "../../common/Selects";
 import { Validator } from 'react-admin-base-adminkit';
 import { MultiValue } from 'react-admin-base';
@@ -30,31 +29,31 @@ export default function AuthorSelector({ value, onChange }) {
                             <tr>
                                 <td>{ index + 1 }</td>
                                 <td>
-                                    <Validator name="author.p_mail" type="required">
+                                    <Validator name="author.email" type="required">
                                         <AuthorSelect
-                                            value={author.p_mail}
+                                            value={author.email}
                                             onChange={value => {
                                                 const updateObj = {};
-                                                if (value && value.name) {
-                                                    updateObj.name = value.name;
-                                                    updateObj.surname = value.surname;
+                                                if (value && value.first_name) {
+                                                    updateObj.first_name = value.first_name;
+                                                    updateObj.last_name = value.last_name;
                                                     updateObj.adress = value.adress;
                                                 }
 
-                                                updateObj.p_mail = value && (value.p_mail || value.label || value);
+                                                updateObj.email = value && (value.email || value.label || value);
                                                 onChange({ ...author, ...updateObj });
                                             }}
                                         />
                                     </Validator>
                                 </td>
                                 <td>
-                                    <Validator name="author.name" type="required">
-                                        <Input type="text" value={author.name} onChange={a => onChange({ ...author, name: a.currentTarget.value })}/>
+                                    <Validator name="author.first_name" type="required">
+                                        <Input type="text" value={author.first_name} onChange={a => onChange({ ...author, first_name: a.currentTarget.value })}/>
                                     </Validator>
                                 </td>
                                 <td>
-                                    <Validator name="author.surname" type="required">
-                                        <Input type="text" value={author.surname} onChange={a => onChange({ ...author, surname: a.currentTarget.value })}/>
+                                    <Validator name="author.last_name" type="required">
+                                        <Input type="text" value={author.last_name} onChange={a => onChange({ ...author, last_name: a.currentTarget.value })}/>
                                     </Validator>
                                 </td>
                                 <td>

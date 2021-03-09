@@ -1,12 +1,12 @@
 import React from 'react';
 import {EntityEditor, SingleFilePicker} from 'react-admin-base-adminkit';
-import {Button, Card, CustomInput, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
+import {Card, CustomInput, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {Breadcrumb} from 'react-admin-base-adminkit';
 import {Redirect} from 'react-router-dom';
 import {Validator} from 'react-admin-base-adminkit';
 import {useUser} from "../../Components/UserProvider";
-import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
+import {ParameterSelect} from "../../common/Selects";
 import UploadConfigGDrive from "../../UploadConfigGDrive";
 import AuthorSelector from "./AuthorSelector";
 
