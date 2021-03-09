@@ -1,8 +1,14 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {ApiSelect} from "react-admin-base-adminkit";
 
 export function AuthorSelect(props) {
-    return <ApiSelect {...props} url="/api/author" />;
+    const onCreateOption = useCallback(function(email) {
+        return Promise.resolve({ email });
+    }, []);
+
+    return <ApiSelect url="/api/author" idKey="email" nameKey="email" onCreateOption={onCreateOption} {...props}>
+        { row => <>{row.email} (<b>{row.first_name} {row.last_name}</b>)</> }
+    </ApiSelect>;
 }
 
 export function ParameterSelect(props) {

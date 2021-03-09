@@ -31,7 +31,11 @@ export default function AuthorSelector({ value, onChange }) {
                                 <td>
                                     <Validator name="author.email" type="required">
                                         <AuthorSelect
-                                            value={author.email}
+                                            value={author.email && {
+                                                first_name: author.first_name,
+                                                last_name: author.last_name,
+                                                email: author.email
+                                            }}
                                             onChange={value => {
                                                 const updateObj = {};
                                                 if (value && value.first_name) {
