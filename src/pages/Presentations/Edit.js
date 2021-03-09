@@ -58,7 +58,7 @@ export default class EditPresentation extends Component {
                             <CardBody>
                                 <p>
                                     {controller.state.authors.map((author, index) =>
-                                        <>{author.name} {author.surname}{" "}
+                                        <>{author.first_name} {author.last_name}{" "}
                                             {!!author.correspond && <>(Correspond)</>}
                                             {!!author.presenter && <span>{'('}Presenter{')'}</span>},
                                         </>

@@ -44,7 +44,7 @@ export default class List extends Component {
                                     <td>{row.parampap && row.parampap.value}</td>
                                     <td>{row.parampre && row.parampre.value}</td>
                                     <td>{row.authors.map((author, index) => <div>
-                                        <div>{index + 1}. {author.name} {author.surname}
+                                        <div>{index + 1}. {author.first_name} {author.last_name}
                                             {!!author.correspond && <span>{'('}Correspond{')'}</span>}
                                             {!!author.presenter && <span>{'('}Presenter{')'}</span>}
                                         </div>

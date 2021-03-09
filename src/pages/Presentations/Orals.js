@@ -48,7 +48,7 @@ export default class Orals extends Component {
                                     <td>{row.topic && row.topic.value}</td>
                                     <td>{row.parampre && row.parampre.value}</td>
                                     <td>{row.authors.map((author, index) => <div>
-                                        {index + 1}. {author.name} {author.surname}{" "}
+                                        {index + 1}. {author.first_name} {author.last_name}{" "}
                                         {!!author.correspond && <>(Correspond)</>}
                                         {!!author.presenter && <>(Presenter)</>}
                                     </div>)}

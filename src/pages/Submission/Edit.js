@@ -18,12 +18,12 @@ export default function EditCreate({match}) {
     const [data, setData] = entity;
 
     return <Breadcrumb
-        title="Submission"
+        title={data.en_title}
         data={
             [
                 {
                     href: '/submissions',
-                    name: 'Submissions'
+                    name: 'Submission'
                 },
                 data.id && {
                     href: '/submission/' + data.id,
