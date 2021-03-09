@@ -31,11 +31,11 @@ export default function AuthorSelector({ value, onChange }) {
                                 <td>
                                     <Validator name="author.email" type="required">
                                         <AuthorSelect
-                                            value={author.email && {
+                                            value={(author.email && {
                                                 first_name: author.first_name,
                                                 last_name: author.last_name,
                                                 email: author.email
-                                            }}
+                                            }) || null}
                                             onChange={value => {
                                                 const updateObj = {};
                                                 if (value && value.first_name) {
@@ -61,7 +61,7 @@ export default function AuthorSelector({ value, onChange }) {
                                     </Validator>
                                 </td>
                                 <td>
-                                    <Validator name="correspond" type="required">
+                                    <ValueValidator name="correspond" value={value.find(a => a.correspond) || null} type="required">
                                         <CustomInput
                                             id={'correspond' + index}
                                             type="radio"
@@ -76,10 +76,10 @@ export default function AuthorSelector({ value, onChange }) {
                                                 }))
                                             }}
                                         />
-                                    </Validator>
+                                    </ValueValidator>
                                 </td>
                                 <td>
-                                    <Validator name="presenter" type="required">
+                                    <ValueValidator name="presenter" value={value.find(a => a.presenter) || null} type="required">
                                         <CustomInput
                                             id={'presenter' + index}
                                             type="radio"
@@ -94,7 +94,7 @@ export default function AuthorSelector({ value, onChange }) {
                                                 }))
                                             }}
                                         />
-                                    </Validator>
+                                    </ValueValidator>
                                 </td>
                                 <td>
                                     <Button size="sm" outline color="danger"

@@ -46,7 +46,7 @@ export default function UploadConfig({ children }) {
                 }
             }
 
-            var data = await api.tokenized.post('/upload', form, {
+            var data = await api.tokenized.post('/api/upload', form, {
                 onUploadProgress: progress && function(progressEvent) {
                     progress(progressEvent.loaded / progressEvent.total);
                 },

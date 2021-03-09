@@ -135,7 +135,7 @@ export default function EditCreate({match}) {
                                         value: a,
                                         label: a
                                     }))}
-                                    onChange={a => setData({pap_keyword: (a && a.join('|')) || ""})}
+                                    onChange={a => setData({pap_keyword: (a && a.map(b => b.value).join('|')) || ""})}
                                 />
                             </Validator>
                         </Col>
@@ -176,6 +176,7 @@ export default function EditCreate({match}) {
                         </Col>
                         <Col xs="12" md="9">
                             <SingleFilePicker
+                                accepts=".doc,.docx"
                                 disabled={!(user.role >= 8)}
                                 value={data.abstract_dosya}
                                 onChange={a => setData({abstract_dosya: a})}
@@ -193,6 +194,7 @@ export default function EditCreate({match}) {
                                 type="file"
                                 >
                                 <SingleFilePicker
+                                    accepts=".doc,.docx"
                                     disabled={!(user.role >= 8)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
@@ -208,10 +210,10 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="poster_presentation_dosya"
                                 value={data.abstract_dosya || data.full_paper_dosya || data.poster_presentation_dosya}
-
                                 type="file"
                                 >
                                 <SingleFilePicker
+                                    accepts=".pdf"
                                     disabled={!(user.role >= 8)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
@@ -226,8 +228,8 @@ export default function EditCreate({match}) {
                         <Col xs="12" md="9">
                             <UploadConfigGDrive>
                                 <SingleFilePicker
+                                    accepts=".mp4"
                                     disabled={!(user.role >= 8)}
-                                    accepts="video/mp4,application/pdf"
                                     value={data.video}
                                     onChange={a => setData({video: a})}
                                 />

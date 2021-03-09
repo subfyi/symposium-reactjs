@@ -2,8 +2,8 @@ import React, {useCallback} from 'react';
 import {ApiSelect} from "react-admin-base-adminkit";
 
 export function AuthorSelect(props) {
-    const onCreateOption = useCallback(function(email) {
-        return Promise.resolve({ email });
+    const onCreateOption = useCallback(async function(email) {
+        return { email };
     }, []);
 
     return <ApiSelect url="/api/author" idKey="email" nameKey="email" onCreateOption={onCreateOption} {...props}>

@@ -1,7 +1,7 @@
 import "react-admin-base-adminkit/assets/app.css";
 import './App.scss';
 
-import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, useAuth} from 'react-admin-base';
+import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, RegisterRoute } from 'react-admin-base';
 import {MainLayout, Reset, LanguageProvider, Login} from 'react-admin-base-adminkit';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
@@ -9,9 +9,8 @@ import MenuHeader from "./MenuHeader";
 import Footer from "./Footer";
 import {UserProvider} from "./Components/UserProvider";
 import UploadConfig from "./UploadConfig";
-import 'react-dates/initialize';
-import 'react-dates/lib/css/_datepicker.css';
 import languageEn from './i18n/en.json';
+import Register from "./start/Register";
 
 const languages = {
     en: {
@@ -42,6 +41,9 @@ function BaseApp() {
                             <ForgotPasswordRoute>
                                 <Reset/>
                             </ForgotPasswordRoute>
+                            <RegisterRoute>
+                                <Register />
+                            </RegisterRoute>
                         </NotAuthorized>
                         <Authorized>
                             <UserProvider>
