@@ -26,6 +26,7 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@fortawesome/fontawesome-free": "^5.15.2",
+    "axios": "^0.21.1",
     "bootswatch": "^4.6.0",
     "file-dialog": "0.0.8",
     "file-saver": "^2.0.5",
