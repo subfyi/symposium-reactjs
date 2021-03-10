@@ -34,7 +34,7 @@
     "query-string": "^6.14.1",
     "react": "^17.0.1",
     "react-admin-base": "^0.2.4",
-    "react-admin-base-adminkit": "^0.2.8",
+    "react-admin-base-adminkit": "^0.2.9",
     "react-admin-base-ckeditor": "^0.1.2",
     "react-aspect-ratio": "^1.0.49",
     "react-color": "^2.19.3",
