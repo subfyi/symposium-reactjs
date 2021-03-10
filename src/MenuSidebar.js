@@ -11,14 +11,15 @@ export default injectIntl(function MenuSidebar() {
             <Menu title={"Send Paper"} to="/submission/create" icon="fas fa-book-open"/>
             <Menu title={"My Paper"} to="/submissions" icon="fas fa-book-reader"/>
         </MenuGroup>
+        {user.role >= 8 &&
         <MenuGroup title="Presentations">
             <Menu title={"Oral Presentations"} to="/presentation/oral" icon="far fa-file-video"/>
             <Menu title={"Poster Presentations"} to="/presentation/poster" icon="fas fa-file-powerpoint"/>
         </MenuGroup>
-
+        }
         <MenuGroup title="Settings">
-            <Menu title={"Users"} to="/user" icon="fas fa-users"/>
-            <Menu title={"Roles"} to="/roles" icon="fas fa-magic"/>
+            {user.role >= 8 && <Menu title="Users" to="/user" icon="fas fa-users"/>}
+            {user.role >= 8 && <Menu title={"Roles"} to="/roles" icon="fas fa-magic"/>}
             <Menu title={"Profile"} to="/profile" icon="fas fa-user"/>
         </MenuGroup>
     </Sidebar>;

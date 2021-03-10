@@ -29,26 +29,15 @@ export default function AuthorSelector({ value, onChange }) {
                             <tr>
                                 <td>{ index + 1 }</td>
                                 <td>
-                                    <Validator name="author.email" type="required">
-                                        <AuthorSelect
-                                            value={(author.email && {
-                                                first_name: author.first_name,
-                                                last_name: author.last_name,
-                                                email: author.email
-                                            }) || null}
-                                            onChange={value => {
-                                                const updateObj = {};
-                                                if (value && value.first_name) {
-                                                    updateObj.first_name = value.first_name;
-                                                    updateObj.last_name = value.last_name;
-                                                    updateObj.adress = value.adress;
-                                                }
-
-                                                updateObj.email = value && (value.email || value.label || value);
-                                                onChange({ ...author, ...updateObj });
-                                            }}
-                                        />
-                                    </Validator>
+                                    <AuthorSelect
+                                        email={author.email}
+                                        value={(author.email && {
+                                            first_name: author.first_name,
+                                            last_name: author.last_name,
+                                            email: author.email
+                                        }) || null}
+                                        onChange={a => onChange({ value: a })}
+                                    />
                                 </td>
                                 <td>
                                     <Validator name="author.first_name" type="required">
