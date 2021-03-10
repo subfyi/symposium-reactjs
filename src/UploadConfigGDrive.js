@@ -2,7 +2,7 @@
 import React, { useCallback } from 'react';
 import {UploadProvider, useAuth} from "react-admin-base";
 import Axios from "axios";
-import uuid from 'uuid/v1';
+import { v4 as uuidv4 } from 'uuid';
 
 function cozunurluk_bul(blob) {
     return new Promise(function (resolve) {
@@ -42,7 +42,7 @@ export default function UploadConfigGDrive({ children }) {
         abort = abortToAxiosAbort(abort);
 
         try {
-            var slug = uuid();
+            var slug = uuidv4();
 
             var uploadResponse = await api.tokenized.post('/api/gupload', {
                 slug: slug,
