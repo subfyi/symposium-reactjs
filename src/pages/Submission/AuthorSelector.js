@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, CustomInput, Button} from 'reactstrap';
+import {Input, CustomInput, Button, Row, Col, CardFooter} from 'reactstrap';
 import {AuthorSelect} from "../../common/Selects";
 import { Validator } from 'react-admin-base-adminkit';
 import { MultiValue } from 'react-admin-base';
@@ -10,7 +10,7 @@ export default function AuthorSelector({ value, onChange }) {
 
     return <>
         <ValueValidator name="authors" type="required" value={(value || []).length ? 'a' : ''}>
-            <table className="table table-striped tablo">
+            <table className="table tablo">
                 <thead>
                 <tr>
                     <th style={{width: '5%'}}>#</th>
@@ -27,7 +27,7 @@ export default function AuthorSelector({ value, onChange }) {
                     {
                         (author, onChange, index) => <>
                             <tr>
-                                <td>{ index + 1 }</td>
+                                <td rowSpan="2">{ index + 1 }</td>
                                 <td>
                                     <Validator name="author.email" type="required">
                                         <AuthorSelect
@@ -52,15 +52,15 @@ export default function AuthorSelector({ value, onChange }) {
                                 </td>
                                 <td>
                                     <Validator name="author.first_name" type="required">
-                                        <Input type="text" value={author.first_name} onChange={a => onChange({ ...author, first_name: a.currentTarget.value })}/>
+                                        <Input type="text" value={author.first_name || ''} onChange={a => onChange({ ...author, first_name: a.currentTarget.value })}/>
                                     </Validator>
                                 </td>
                                 <td>
                                     <Validator name="author.last_name" type="required">
-                                        <Input type="text" value={author.last_name} onChange={a => onChange({ ...author, last_name: a.currentTarget.value })}/>
+                                        <Input type="text" value={author.last_name || ''} onChange={a => onChange({ ...author, last_name: a.currentTarget.value })}/>
                                     </Validator>
                                 </td>
-                                <td>
+                                <td className="text-center">
                                     <ValueValidator name="correspond" value={value.find(a => a.correspond) || null} type="required">
                                         <CustomInput
                                             id={'correspond' + index}
@@ -78,7 +78,7 @@ export default function AuthorSelector({ value, onChange }) {
                                         />
                                     </ValueValidator>
                                 </td>
-                                <td>
+                                <td className="text-center">
                                     <ValueValidator name="presenter" value={value.find(a => a.presenter) || null} type="required">
                                         <CustomInput
                                             id={'presenter' + index}
@@ -96,7 +96,7 @@ export default function AuthorSelector({ value, onChange }) {
                                         />
                                     </ValueValidator>
                                 </td>
-                                <td>
+                                <td rowSpan="2">
                                     <Button size="sm" outline color="danger"
                                             onClick={() => onChange(null)}>
                                         <i className="fa fa-trash"/>
@@ -104,10 +104,9 @@ export default function AuthorSelector({ value, onChange }) {
                                 </td>
                             </tr>
                             <tr>
-                                <td></td>
-                                <td colSpan="6">
+                                <td colSpan="5">
                                     <Validator name="author.adress" type="required">
-                                        <Input placeholder="Affiliation Adress" type="text" value={author.adress} onChange={a => onChange({ ...author, address: a.currentTarget.value })} />
+                                        <Input placeholder="Affiliation Adress" type="text" value={author.adress || ''} onChange={a => onChange({ ...author, adress: a.currentTarget.value })} />
                                     </Validator>
                                 </td>
                             </tr>
@@ -118,6 +117,13 @@ export default function AuthorSelector({ value, onChange }) {
                 </tbody>
             </table>
         </ValueValidator>
-        <Button color="primary" onClick={a => onChange((value || []).concat([{}]))}>Add Author</Button>
+        <CardFooter>
+            <Row>
+                <Col md="3" />
+                <Col md="6">
+                    <Button color="primary" block onClick={a => onChange((value || []).concat([{}]))}>Add Author</Button>
+                </Col>
+            </Row>
+        </CardFooter>
     </>
 }

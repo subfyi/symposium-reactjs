@@ -131,9 +131,13 @@ export default function EditCreate({match}) {
                                 <ParameterSelect
                                     isMulti
                                     type="tagcon"
+                                    onCreateOption={row => ({
+                                        id: row,
+                                        value: row
+                                    })}
                                     value={(data.pap_keyword || "").split('|').filter(a => a.length).map(a => ({
-                                        value: a,
-                                        label: a
+                                        id: a,
+                                        value: a
                                     }))}
                                     onChange={a => setData({pap_keyword: (a && a.map(b => b.value).join('|')) || ""})}
                                 />

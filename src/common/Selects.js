@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
 import {ApiSelect} from "react-admin-base-adminkit";
+import {FormattedMessage} from "react-intl";
 
 export function AuthorSelect(props) {
     const onCreateOption = useCallback(async function(email) {
@@ -7,14 +8,17 @@ export function AuthorSelect(props) {
     }, []);
 
     return <ApiSelect url="/api/author" idKey="email" nameKey="email" onCreateOption={onCreateOption} {...props}>
-        { row => <>{row.email} (<b>{row.first_name} {row.last_name}</b>)</> }
+        { row => row.__isNew__ ? <FormattedMessage
+            id="CREATE_VALUE"
+            values={{ text: <b>{row.email}</b> }}
+        /> : <>{row.email} (<b>{row.first_name} {row.last_name}</b>)</> }
     </ApiSelect>;
 }
 
 export function ParameterSelect(props) {
     const { ptur, type } = props;
 
-    return <ApiSelect {...props} url={`/api/parameters${(ptur && `-${ptur}`) || ''}/${type}`} nameKey="value" />;
+    return <ApiSelect url={`/api/parameters${(ptur && `-${ptur}`) || ''}/${type}`} nameKey="value" idKey="id" {...props} />;
 }
 
 export function LanguageSelect(props) {
