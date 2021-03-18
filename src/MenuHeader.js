@@ -56,7 +56,7 @@ export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
             Documents
         </a>
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/documents-all" target="_blank" rel="noreferrer">
-            Previous Documents
+            Archives
         </a>
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/contact" target="_blank" rel="noreferrer">
             Contact
