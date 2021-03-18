@@ -18,6 +18,7 @@ export default class List extends Component {
                         {...this.props}>
                         <thead>
                         <tr>
+                            <IdColumn/>
                             <Column>email</Column>
                             <Column>first_name</Column>
                             <Column>last_name</Column>
@@ -27,6 +28,7 @@ export default class List extends Component {
                         <tbody>
                         {
                             row => <tr>
+                                <td>{row.id}</td>
                                 <td>{row.email}</td>
                                 <td>{row.first_name}</td>
                                 <td>{row.last_name}</td>
