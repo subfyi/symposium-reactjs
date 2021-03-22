@@ -10,7 +10,16 @@ import {ParameterSelect} from "../../common/Selects";
 import UploadConfigGDrive from "../../UploadConfigGDrive";
 import AuthorSelector from "./AuthorSelector";
 
-export default function EditCreate({match}) {
+export default function EditCreate(props) {
+
+    const id = props.match.params.id;
+    return <EditCreateSlug
+        key={id}
+        {...props}
+    />
+}
+
+function EditCreateSlug({match}) {
     const id = match.params.id;
 
     const user = useUser();
@@ -36,7 +45,7 @@ export default function EditCreate({match}) {
             ]
         }
     >
-        {data && data.id && +id !== +data.id && <Redirect to={"/submission/" + data.id + "/edit" }/>}
+        {data && data.id && +id !== +data.id && <Redirect to={"/submission/" + data.id + "/edit"}/>}
         <EntityEditor entity={entity}>
             <Card>
                 <CardBody>
@@ -91,7 +100,7 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="en_title"
                                 type="required"
-                                >
+                            >
                                 <Input type="text"
                                        disabled={!!data.paper_approved && !(user.role >= 8)}
                                        value={data.en_title}
@@ -109,7 +118,7 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="en_abstract"
                                 type="required"
-                                >
+                            >
                                 <Input type="textarea"
                                        rows="10"
                                        disabled={!!data.paper_approved && !(user.role >= 8)}
@@ -127,7 +136,7 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="pap_keyword"
                                 type="required"
-                                >
+                            >
                                 <ParameterSelect
                                     isMulti
                                     type="tagcon"
@@ -152,7 +161,7 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="pap_topic_p"
                                 type="required"
-                                >
+                            >
                                 <ParameterSelect
                                     type="keywordcon"
                                     value={data.topic}
@@ -165,7 +174,7 @@ export default function EditCreate({match}) {
                             <Label htmlFor="text-input">Presentation Type</Label>
                         </Col>
                         <Col xs="12" md="9">
-                            <Validator type="required" name="lang" >
+                            <Validator type="required" name="lang">
                                 <ParameterSelect
                                     type="uygulamacon"
                                     value={data.parampre}
@@ -181,7 +190,7 @@ export default function EditCreate({match}) {
                         <Col xs="12" md="9">
                             <SingleFilePicker
                                 accepts=".doc,.docx"
-                                disabled={!(user.role >= 8)}
+                                disabled={!(user.role >= 0)}
                                 value={data.abstract_dosya}
                                 onChange={a => setData({abstract_dosya: a})}
                             />
@@ -196,10 +205,10 @@ export default function EditCreate({match}) {
                                 name="full_paper_dosya"
                                 value={data.abstract_dosya || data.full_paper_dosya || data.poster_presentation_dosya}
                                 type="file"
-                                >
+                            >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 0)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -215,32 +224,32 @@ export default function EditCreate({match}) {
                                 name="poster_presentation_dosya"
                                 value={data.abstract_dosya || data.full_paper_dosya || data.poster_presentation_dosya}
                                 type="file"
-                                >
+                            >
                                 <SingleFilePicker
                                     accepts=".pdf"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 0)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
                                 />
                             </Validator>
                         </Col>
                     </FormGroup>
-                    <FormGroup row>
-                        <Col md="3">
-                            <Label htmlFor="text-input">Presentation File (.mp4)</Label>
-                        </Col>
-                        <Col xs="12" md="9">
-                            <UploadConfigGDrive>
-                                <SingleFilePicker
-                                    accepts=".mp4"
-                                    disabled={!(user.role >= 8)}
-                                    value={data.video}
-                                    onChange={a => setData({video: a})}
-                                />
-                            </UploadConfigGDrive>
-                        </Col>
-                    </FormGroup>
-
+                    {!(user.role >= 8 && <FormGroup row>
+                            <Col md="3">
+                                <Label htmlFor="text-input">Presentation File (.mp4)</Label>
+                            </Col>
+                            <Col xs="12" md="9">
+                                <UploadConfigGDrive>
+                                    <SingleFilePicker
+                                        accepts=".mp4"
+                                        disabled={!(user.role >= 8)}
+                                        value={data.video}
+                                        onChange={a => setData({video: a})}
+                                    />
+                                </UploadConfigGDrive>
+                            </Col>
+                        </FormGroup>
+                    )}
                     <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Prefered Publish Type</Label>
@@ -249,7 +258,7 @@ export default function EditCreate({match}) {
                             <Validator
                                 name="pap_type"
                                 type="required"
-                                >
+                            >
                                 <ParameterSelect
                                     type="birimcon"
                                     value={data.parampap}
@@ -272,7 +281,7 @@ export default function EditCreate({match}) {
             <Card>
                 <AuthorSelector
                     value={data.authors}
-                    onChange={a => setData({ authors: a })}
+                    onChange={a => setData({authors: a})}
                 />
             </Card>
         </EntityEditor>
