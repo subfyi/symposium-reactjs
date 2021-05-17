@@ -45,7 +45,7 @@ export default function Router() {
         <Redirect exact from="/logout" to="/submissions"/>
 
         <Route path="/submission/:id/edit" component={SubmissionEdit}/>
-        <Route path="/submission/create" component={SubmissionEdit}/>
+        {user.role >= 8 && <Route path="/submission/create" component={SubmissionEdit}/>}
         <Route path="/submissions" component={Submission}/>
 
         <Route path="/presentation/:id/watch" component={WatchPresentation}/>
@@ -76,7 +76,7 @@ export default function Router() {
         {user.role >= 8 && <Route path="/subject/create" component={SubjectsEdit}/>}
         {user.role >= 8 && <Route path="/subject" component={Subjects}/>}
 
-        {user.role >= 8 &&  <Route path="/roles/:id/edit" component={RoleAdd}/>}
+        {user.role >= 8 && <Route path="/roles/:id/edit" component={RoleAdd}/>}
         {user.role >= 8 && <Route path="/roles/create" component={RoleAdd}/>}
         {user.role >= 8 && <Route path="/roles" component={RoleList}/>}
 

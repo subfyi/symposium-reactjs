@@ -8,7 +8,7 @@ export default injectIntl(function MenuSidebar() {
 
     return <Sidebar>
         <MenuGroup title="Submission">
-            <Menu title={"Send Paper"} to="/submission/create" icon="fas fa-book-open"/>
+            {user.role >= 8 && <Menu title={"Send Paper"} to="/submission/create" icon="fas fa-book-open"/> }
             <Menu title={"My Paper"} to="/submissions" icon="fas fa-book-reader"/>
         </MenuGroup>
         {user.role >= 8 &&

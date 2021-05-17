@@ -16,7 +16,6 @@ export default class List extends Component {
             <Card>
                 <CardBody>
                     <BootstrapDataTable
-                        add="/submission/create"
                         url="/api/submission?year=2021"
                         {...this.props}>
                         <thead>
