@@ -18,7 +18,7 @@ export default function List() {
             <CardBody>
                 <BootstrapDataTable
                     url="/api/submission?year=2021"
-                    {...this.props}>
+                    >
                     <thead>
                     <tr>
                         <IdColumn/>
