@@ -3,9 +3,11 @@ import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, IdColumn
 import {Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
+import {useUser} from "../../Components/UserProvider";
 
 export default class List extends Component {
     render() {
+        const user = useUser();
 
         return <Breadcrumb data={[
             {
