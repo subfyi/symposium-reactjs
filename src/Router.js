@@ -44,7 +44,7 @@ export default function Router() {
         <Redirect exact from="/register" to="/submissions"/>
         <Redirect exact from="/logout" to="/submissions"/>
 
-        <Route path="/submission/:id/edit" component={SubmissionEdit}/>
+        {user.role >= 8 && <Route path="/submission/:id/edit" component={SubmissionEdit}/>}
         {user.role >= 8 && <Route path="/submission/create" component={SubmissionEdit}/>}
         <Route path="/submissions" component={Submission}/>
 
