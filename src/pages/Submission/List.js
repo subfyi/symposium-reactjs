@@ -30,7 +30,7 @@ export default function List() {
                         <Column>Authors</Column>
                         <Column>Files</Column>
                         <Column sort="bloglar.updated_at">Creator</Column>
-                        <ActionsColumn/>
+                        {user.role > 8 && <ActionsColumn/>}
                     </tr>
                     </thead>
                     <tbody>
@@ -66,10 +66,11 @@ export default function List() {
                                 <td>
                                     {row.user.name} {row.user.surname}
                                 </td>
+                                {user.type > 8 &&
                                 <Actions
                                     edit={"/submission/" + row.id + "/edit"}
-                                    del={(user.role > 8) && "/api/submission/" + row.id}
-                                />
+                                    del={"/api/submission/" + row.id}
+                                />}
                             </tr>;
                         }
                     }
