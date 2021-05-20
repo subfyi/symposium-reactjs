@@ -1,5 +1,5 @@
 import React from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, IdColumn} from 'react-admin-base-adminkit';
+import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn} from 'react-admin-base-adminkit';
 import {Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
@@ -74,6 +74,35 @@ export default function List() {
                         }
                     }
                     </tbody>
+                    <>
+                        <ExcelExportButton
+                            name="Papers"
+                            params={{
+                                sort: 'id',
+                                desc: false
+                            }}
+                            header={[
+                                "ID",
+                                "Creation Date",
+                                "Sended",
+                                "Title",
+                                "Topic",
+                                "Pap. Type",
+                                "Pre. Type",
+                                "Creator"
+                            ]}
+                            map={paper => [
+                                paper.id,
+                                new Date(paper.created_at),
+                                paper.en_title,
+                                paper.topic && paper.topic.value,
+                                paper.parampap && paper.parampap.value,
+                                paper.parampre && paper.parampre.value,
+                                paper.user.name + paper.user.surname,
+                                paper.authors.map(a => a.first_name + " " + a.last_name).join(", ")
+                            ]}
+                        />
+                    </>
                 </BootstrapDataTable>
             </CardBody>
         </Card>
