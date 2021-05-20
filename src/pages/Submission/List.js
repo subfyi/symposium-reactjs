@@ -68,8 +68,8 @@ export default class List extends Component {
                                         {row.user.name} {row.user.surname}
                                     </td>
                                     <Actions
-                                        edit={(user.role >= 8) && "/submission/" + row.id + "/edit"}
-                                        del={(user.role >= 8) && "/api/submission/" + row.id}
+                                        edit={"/submission/" + row.id + "/edit"}
+                                        del={(user.role > 8) && "/api/submission/" + row.id}
                                     />
                                 </tr>;
                             }
