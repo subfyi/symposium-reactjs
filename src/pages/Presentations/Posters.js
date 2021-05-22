@@ -6,12 +6,20 @@ import {Link} from "react-router-dom";
 export default class Posters extends Component {
     render() {
 
-        return <Breadcrumb data={[
-            {
-                name: "Poster Presentations",
-                href: '/presentation/poster'
+        return <Breadcrumb
+            data={
+                [
+                    {
+                        href: '/presentation/oral',
+                        name: 'Oral Presentation'
+                    },
+                    {
+                        href: '/presentation/poster',
+                        name: 'Poster Presentation'
+                    },
+                ]
             }
-        ]}>
+        >
             <Card>
                 <CardBody>
                     <Table hover bordered striped responsive size="m">
@@ -26,11 +34,10 @@ export default class Posters extends Component {
             <Card>
                 <CardBody>
                     <BootstrapDataTable
-                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&posters=1&year=2020&presentation=1"
+                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&posters=1&year=2021&presentation=1"
                         {...this.props}>
                         <thead>
                         <tr>
-                            <IdColumn/>
                             <Column sort="en_title">Title of Abstract</Column>
                             <Column sort="topic.value">Topic of Article</Column>
                             <Column sort="parampre.value">Pre. Type</Column>
@@ -43,7 +50,6 @@ export default class Posters extends Component {
                         {
                             row => {
                                 return <tr>
-                                    <td>{row.id}</td>
                                     <td>{row.en_title}</td>
                                     <td>{row.topic && row.topic.value}</td>
                                     <td>{row.parampre && row.parampre.value}</td>

@@ -4,6 +4,7 @@ import SiparisDetay from './SiparisDetay';
 import AspectRatio from 'react-aspect-ratio';
 import 'react-aspect-ratio/aspect-ratio.css';
 import {Card, CardBody, CardHeader, CardHeaderToolbar} from '../../../_metronic/_partials/controls';
+import Detay from "./Detay";
 
 
 class CustomPanel extends Component {
@@ -76,7 +77,7 @@ export default class EditPresentation extends Component {
                             </CardBody>
                         </Card>
 
-                        <SiparisDetay
+                        <Detay
                             value={controller.state.icerikler}
                             onChange={val => controller.setState({icerikler: val})}
                             onSave={() => controller.save()}

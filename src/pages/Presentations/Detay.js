@@ -1,41 +1,11 @@
 import React, {Component} from 'react';
-import { Button,  ButtonGroup, Table } from 'reactstrap';
-
-import SingleFilePicker from '../../upload/SingleFilePicker';
-
+import {Button, ButtonGroup, Card, CardBody, CardHeader, Table} from 'reactstrap';
 import Moment from 'react-moment';
+import {CKEditor} from "react-admin-base-ckeditor";
+import {SingleFilePicker} from "react-admin-base-adminkit";
 
-class CustomPanel extends Component {
-    state = {on: true};
-
-    render() {
-        return <Card className="mb-5">
-            <CardHeader onClick={a => {
-                this.setState({on: !this.state.on});
-            }} style={{cursor: 'pointer'}}>
-                <i className="fa fa-align-justify"></i>
-                {' '}{this.props.label}
-
-                {!this.state.on && <i className="fa fa-eye"></i>}
-
-            </CardHeader>
-            <CardBody>
-                {this.state.on && this.props.children}
-            </CardBody>
-        </Card>;
-    }
-}
-
-
-export default class SiparisDetay extends Component {
+export default class Detay extends Component {
     state = {};
-
-
-    async componentWillMount() {
-        const user = await tokenized.get('/api/myself');
-        this.setState({user: user.data});
-    }
-
 
     render() {
         if (!this.state.user)

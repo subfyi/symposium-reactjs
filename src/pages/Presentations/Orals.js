@@ -6,12 +6,20 @@ import {Link} from "react-router-dom";
 export default class Orals extends Component {
     render() {
 
-        return <Breadcrumb data={[
-            {
-                name: "Oral Presentations",
-                href: '/presentation/oral'
+        return <Breadcrumb
+            data={
+                [
+                    {
+                        href: '/presentation/oral',
+                        name: 'Oral Presentation'
+                    },
+                    {
+                        href: '/presentation/poster',
+                        name: 'Poster Presentation'
+                    },
+                ]
             }
-        ]}>
+        >
             <Card>
                 <CardBody>
                     <Table hover bordered striped responsive size="m">
@@ -26,24 +34,21 @@ export default class Orals extends Component {
             <Card>
                 <CardBody>
                     <BootstrapDataTable
-                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&orals=1&year=2020&presentation=1"
+                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&orals=1&year=2021&presentation=1"
                         {...this.props}>
                         <thead>
                         <tr>
-                            <IdColumn/>
                             <Column sort="en_title">Title of Abstract</Column>
                             <Column sort="topic.value">Topic of Article</Column>
                             <Column sort="parampre.value">Pre. Type</Column>
                             <Column>Authors</Column>
                             <Column></Column>
-                            <ActionsColumn/>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             row => {
                                 return <tr>
-                                    <td>{row.id}</td>
                                     <td>{row.en_title}</td>
                                     <td>{row.topic && row.topic.value}</td>
                                     <td>{row.parampre && row.parampre.value}</td>
@@ -54,8 +59,7 @@ export default class Orals extends Component {
                                     </div>)}
                                     </td>
                                     <th><Link to={"/presentation/" + row.id + "/watch"} className="btn btn-sm btn-outline-primary"><i className="fas fa-eye"/> Watch</Link></th>
-                                    <Actions
-                                    />
+
                                 </tr>;
                             }
                         }

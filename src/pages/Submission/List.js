@@ -98,8 +98,8 @@ export default function List() {
                                 paper.topic && paper.topic.value,
                                 paper.parampap && paper.parampap.value,
                                 paper.parampre && paper.parampre.value,
-                                paper.user.name + paper.user.surname,
-                                paper.authors.map(a => a.first_name + " " + a.last_name).join(", ")
+                                paper.user.name + " " + paper.user.surname,
+                                paper.authors.map(a => a.first_name + " " + a.last_name + (!!a.correspond ? "*" : "") ).join(", ")
                             ]}
                         />
                     </>

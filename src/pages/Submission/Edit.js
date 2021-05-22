@@ -49,25 +49,6 @@ function EditCreateSlug({match}) {
         <EntityEditor entity={entity}>
             <Card>
                 <CardBody>
-
-                    {data.video && user && user.role >= 8 && <FormGroup row>
-                        <Col md="3">
-                            <Label htmlFor="text-input">Video Approved</Label>
-                        </Col>
-                        <Col xs="12" md="9">
-                            <CustomInput
-                                id="video_approved"
-                                type="checkbox"
-                                checked={!!data.video_approved}
-                                onChange={a => setData({video_approved: a.currentTarget.checked ? 1 : 0})}
-                            />
-                            <a href={`https://drive.google.com/file/d/${data.video.g_dosyaismi}/preview`} target="_blank"
-                               className="mt-2 btn btn-sm btn-outline-primary">
-                                Watch Video
-                            </a>
-                        </Col>
-                    </FormGroup>}
-
                     {user.role >= 8 && <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Paper Approved</Label>
@@ -81,6 +62,26 @@ function EditCreateSlug({match}) {
                             />
                         </Col>
                     </FormGroup>}
+
+                    {data.video && user && user.role >= 8 && <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Video Approved</Label>
+                        </Col>
+                        <Col xs="6" md="3">
+                            <CustomInput
+                                id="video_approved"
+                                type="checkbox"
+                                checked={!!data.video_approved}
+                                onChange={a => setData({video_approved: a.currentTarget.checked ? 1 : 0})}
+                            />      </Col>
+                            <Col xs="6" md="6">
+                            <a href={data.video.access_url} target="_blank"
+                               className=" btn btn-sm btn-outline-primary">
+                                Watch Presentation Video
+                            </a>
+                        </Col>
+                    </FormGroup>}
+<hr />
 
                     {user.role >= 8 && <FormGroup row>
                         <Col md="3">
@@ -234,7 +235,7 @@ function EditCreateSlug({match}) {
                             </Validator>
                         </Col>
                     </FormGroup>
-                    {!(user.role >= 8 && <FormGroup row>
+                    {(user.role >= 8 && <FormGroup row>
                             <Col md="3">
                                 <Label htmlFor="text-input">Presentation File (.mp4)</Label>
                             </Col>
