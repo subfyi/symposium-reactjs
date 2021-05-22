@@ -179,6 +179,7 @@ function EditCreateSlug({match}) {
                                 <ParameterSelect
                                     type="uygulamacon"
                                     value={data.parampre}
+                                    disabled={!(user.role >= 8)}
                                     onChange={a => setData({parampre: a})}
                                 />
                             </Validator>
@@ -209,7 +210,7 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 0)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -228,14 +229,14 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".pdf"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 0)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
                                 />
                             </Validator>
                         </Col>
                     </FormGroup>
-                    {(user.role >= 8 && <FormGroup row>
+                    {(user.role >= 0 && <FormGroup row>
                             <Col md="3">
                                 <Label htmlFor="text-input">Presentation File (.mp4)</Label>
                             </Col>
@@ -243,7 +244,7 @@ function EditCreateSlug({match}) {
                                 <UploadConfigGDrive>
                                     <SingleFilePicker
                                         accepts=".mp4"
-                                        disabled={!(user.role >= 8)}
+                                        disabled={!(user.role >= 0)}
                                         value={data.video}
                                         onChange={a => setData({video: a})}
                                     />

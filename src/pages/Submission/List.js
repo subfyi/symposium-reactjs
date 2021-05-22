@@ -18,7 +18,7 @@ export default function List() {
             <CardBody>
                 <BootstrapDataTable
                     url="/api/submission?year=2021"
-                    >
+                >
                     <thead>
                     <tr>
                         <IdColumn/>
@@ -30,7 +30,7 @@ export default function List() {
                         <Column>Authors</Column>
                         <Column>Files</Column>
                         <Column sort="bloglar.updated_at">Creator</Column>
-                        {user.role >= 8 && <ActionsColumn/>}
+                        <ActionsColumn/>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,10 +66,10 @@ export default function List() {
                                 <td>
                                     {row.user.name} {row.user.surname}
                                 </td>
-                                {user.role >= 8 && <Actions
+                                <Actions
                                     edit={"/submission/" + row.id + "/edit"}
-                                    del={"/api/submission/" + row.id}
-                                />}
+                                    del={user.role >= 8 && ("/api/submission/" + row.id)}
+                                />
                             </tr>;
                         }
                     }
@@ -99,7 +99,7 @@ export default function List() {
                                 paper.parampap && paper.parampap.value,
                                 paper.parampre && paper.parampre.value,
                                 paper.user.name + " " + paper.user.surname,
-                                paper.authors.map(a => a.first_name + " " + a.last_name + (!!a.correspond ? "*" : "") ).join(", ")
+                                paper.authors.map(a => a.first_name + " " + a.last_name + (!!a.correspond ? "*" : "")).join(", ")
                             ]}
                         />
                     </>
