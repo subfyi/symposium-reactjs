@@ -16,6 +16,7 @@ import WatchPresentation from "./pages/Presentations/Watch";
 
 import Submission from "./pages/Submission/List";
 import SubmissionEdit from "./pages/Submission/Edit";
+import SubmissionDeleted from "./pages/Submission/Deleted";
 
 import Author from "./pages/Authors/List";
 import AuthorEdit from "./pages/Authors/Edit";
@@ -44,6 +45,7 @@ export default function Router() {
         <Redirect exact from="/register" to="/submissions"/>
         <Redirect exact from="/logout" to="/submissions"/>
 
+        <Route path="/submission/deleted" component={SubmissionDeleted}/>
         <Route path="/submission/:id/edit" component={SubmissionEdit}/>
         {user.role >= 8 && <Route path="/submission/create" component={SubmissionEdit}/>}
         <Route path="/submissions" component={Submission}/>

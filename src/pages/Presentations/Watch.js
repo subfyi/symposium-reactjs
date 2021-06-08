@@ -26,31 +26,28 @@ function WatchSlug({match}) {
 
     return <Breadcrumb
         title={data.en_title}
-        data={
-            [
-                {
-                    href: '/presentation/oral',
-                    name: 'Oral Presentation'
-                },
-                {
-                    href: '/presentation/poster',
-                    name: 'Poster Presentation'
-                },
-            ]
-        }
+
     >
         {data && data.id && +id !== +data.id && <Redirect to={"/submission/" + data.id + "/edit"}/>}
         <EntityEditor entity={entity}>
             {data.video &&  <Card>
-                <CardHeader>
-                    Presentations
-                </CardHeader>
 
                 <AspectRatio ratio="16/9" style={{width: '100%'}}>
                     <iframe style={{width: '100%'}} frameBorder="0" src={`https://drive.google.com/file/d/${data.video.g_dosyaismi}/preview`} allowFullScreen/>
                 </AspectRatio>
 
             </Card>}
+
+            {/*data.poster_presentation_dosya && <Card>
+                <CardHeader>
+                    Poster Presentation
+                </CardHeader>
+
+                <AspectRatio ratio="16/9" style={{width: '100%'}}>
+                    <iframe style={{width: '100%'}} frameBorder="0" src={`https://api.iseser.com/uploads/dosya/${data.poster_presentation_dosya.f_klasorismi +"/"+ data.poster_presentation_dosya.f_dosyaisimi}`} allowFullScreen/>
+                </AspectRatio>
+
+            </Card>*/}
             <Card>
                 <CardHeader>
                     Title:{data.en_title}

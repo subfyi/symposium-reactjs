@@ -73,15 +73,15 @@ function EditCreateSlug({match}) {
                                 type="checkbox"
                                 checked={!!data.video_approved}
                                 onChange={a => setData({video_approved: a.currentTarget.checked ? 1 : 0})}
-                            />      </Col>
-                            <Col xs="6" md="6">
-                            <a href={data.video.access_url} target="_blank"
-                               className=" btn btn-sm btn-outline-primary">
+                            /> </Col>
+                        <Col xs="6" md="6">
+                            {data.video && <a href={data.video.access_url} target="_blank"
+                                              className=" btn btn-sm btn-outline-primary">
                                 Watch Presentation Video
-                            </a>
+                            </a>}
                         </Col>
                     </FormGroup>}
-<hr />
+                    <hr/>
 
                     {user.role >= 8 && <FormGroup row>
                         <Col md="3">
@@ -243,7 +243,7 @@ function EditCreateSlug({match}) {
                             <Col xs="12" md="9">
                                 <UploadConfigGDrive>
                                     <SingleFilePicker
-                                        accepts=".mp4"
+                                        accepts={user.role >= 8 ? "" : ".mp4"}
                                         disabled={!(user.role >= 0)}
                                         value={data.video}
                                         onChange={a => setData({video: a})}

@@ -1,23 +1,29 @@
 import React from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn} from 'react-admin-base-adminkit';
-import {Card, CardBody, FormGroup} from "reactstrap";
+import {Button, Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
 import {useUser} from "../../Components/UserProvider";
+
+export function RestoreButton({id}) {
+    return <td>
+        <a href={process.env.REACT_APP_ENDPOINT + "api/submission/" + id + "/restore"}><Button outline color="primary"> <i className="fa fa-recycle"/></Button></a>
+    </td>;
+}
 
 export default function List() {
     const user = useUser();
 
     return <Breadcrumb data={[
         {
-            name: "Submission",
-            href: '/submission'
+            name: "Submission Deleted",
+            href: '/submission/deleted'
         }
     ]}>
         <Card>
             <CardBody>
                 <BootstrapDataTable
-                    url="/api/submission?year=2021"
+                    url="/api/submission?year=2021&pap_status=3"
                 >
                     <thead>
                     <tr>
@@ -29,7 +35,8 @@ export default function List() {
                         <Column sort="parampre.value">Pre. Type</Column>
                         <Column>Authors</Column>
                         <Column>Files</Column>
-                        <Column sort="bloglar.updated_at">Creator</Column>
+                        <Column>Creator</Column>
+                        <Column></Column>
                         <ActionsColumn/>
                     </tr>
                     </thead>
@@ -66,9 +73,9 @@ export default function List() {
                                 <td>
                                     {row.user.name} {row.user.surname}
                                 </td>
+                                <RestoreButton id={row.id}/>
                                 <Actions
                                     edit={"/submission/" + row.id + "/edit"}
-                                    del={user.role >= 8 && ("/api/submission/" + row.id)}
                                 />
                             </tr>;
                         }
@@ -89,8 +96,7 @@ export default function List() {
                                 "Topic",
                                 "Pap. Type",
                                 "Pre. Type",
-                                "Creator",
-                                "Mails"
+                                "Creator"
                             ]}
                             map={paper => [
                                 paper.id,
@@ -100,8 +106,7 @@ export default function List() {
                                 paper.parampap && paper.parampap.value,
                                 paper.parampre && paper.parampre.value,
                                 paper.user.name + " " + paper.user.surname,
-                                paper.authors.map(a => a.first_name + " " + a.last_name + (!!a.correspond ? "*" : "")).join(", "),
-                                paper.authors.map(a => a.email).join(", ")
+                                paper.authors.map(a => a.first_name + " " + a.last_name + (!!a.correspond ? "*" : "")).join(", ")
                             ]}
                         />
                     </>

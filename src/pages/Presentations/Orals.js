@@ -40,7 +40,6 @@ export default class Orals extends Component {
                         <tr>
                             <Column sort="en_title">Title of Abstract</Column>
                             <Column sort="topic.value">Topic of Article</Column>
-                            <Column sort="parampre.value">Pre. Type</Column>
                             <Column>Authors</Column>
                             <Column></Column>
                         </tr>
@@ -51,7 +50,6 @@ export default class Orals extends Component {
                                 return <tr>
                                     <td>{row.en_title}</td>
                                     <td>{row.topic && row.topic.value}</td>
-                                    <td>{row.parampre && row.parampre.value}</td>
                                     <td>{row.authors.map((author, index) => <div>
                                         {index + 1}. {author.first_name} {author.last_name}{" "}
                                         {!!author.correspond && <>(Correspond)</>}
@@ -59,7 +57,6 @@ export default class Orals extends Component {
                                     </div>)}
                                     </td>
                                     <th><Link to={"/presentation/" + row.id + "/watch"} className="btn btn-sm btn-outline-primary"><i className="fas fa-eye"/> Watch</Link></th>
-
                                 </tr>;
                             }
                         }
