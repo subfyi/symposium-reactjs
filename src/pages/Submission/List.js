@@ -5,6 +5,8 @@ import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
 import {useUser} from "../../Components/UserProvider";
 
+const params = { itemPerPage: 50 };
+
 export default function List() {
     const user = useUser();
 
@@ -18,6 +20,7 @@ export default function List() {
             <CardBody>
                 <BootstrapDataTable
                     url="/api/submission?year=2021"
+                    defaultParams={params}
                 >
                     <thead>
                     <tr>

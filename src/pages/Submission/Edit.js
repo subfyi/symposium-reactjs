@@ -244,7 +244,7 @@ function EditCreateSlug({match}) {
                                 <UploadConfigGDrive>
                                     <SingleFilePicker
                                         accepts={user.role >= 8 ? "" : ".mp4"}
-                                        disabled={!(user.role >= 8)}
+                                        disabled={!(user.role >= 8) && data.video}
                                         value={data.video}
                                         onChange={a => setData({video: a})}
                                     />

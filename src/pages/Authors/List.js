@@ -18,23 +18,21 @@ export default class List extends Component {
                         {...this.props}>
                         <thead>
                         <tr>
-                            <IdColumn/>
-                            <Column>email</Column>
-                            <Column>first_name</Column>
-                            <Column>last_name</Column>
+                            <Column sort={"email"}>email</Column>
+                            <Column sort={"first_name"}>first_name</Column>
+                            <Column sort={"last_name"}>last_name</Column>
                             <ActionsColumn/>
                         </tr>
                         </thead>
                         <tbody>
                         {
                             row => <tr>
-                                <td>{row.id}</td>
                                 <td>{row.email}</td>
                                 <td>{row.first_name}</td>
                                 <td>{row.last_name}</td>
                                 <Actions
-                                    edit={`/author/${row.id}/edit`}
-                                    del={`/api/author/${row.id}`}
+                                    edit={`/author/${row.email}/edit`}
+                                    del={`/api/author/${row.email}`}
                                 />
                             </tr>
                         }

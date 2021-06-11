@@ -1,14 +1,28 @@
-import React from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn} from 'react-admin-base-adminkit';
+import React, {useCallback} from 'react';
+import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-adminkit';
 import {Button, Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
 import {useUser} from "../../Components/UserProvider";
+import {useAuth} from "react-admin-base";
 
-export function RestoreButton({id}) {
-    return <td>
-        <a href={process.env.REACT_APP_ENDPOINT + "api/submission/" + id + "/restore"}><Button outline color="primary"> <i className="fa fa-undo"/></Button></a>
-    </td>;
+export function RestoreButton({url}) {
+    const [api] = useAuth();
+    const [params, setParams] = useDataTableContext();
+
+    const handleRestore = useCallback(async function (e) {
+        e.preventDefault();
+        await api.tokenized.get(url);
+        setParams({});
+    }, [api, url, setParams]);
+
+    return <Button type="button" onClick={handleRestore} outline className="ml-1" color="primary"><i className="fa fa-undo"/></Button>;
+}
+
+function RestoreableActions(props) {
+    return <Actions {...props}>
+        {props.restore_url && <RestoreButton url={props.restore_url}/>}
+    </Actions>;
 }
 
 export default function List() {
@@ -36,7 +50,6 @@ export default function List() {
                         <Column>Authors</Column>
                         <Column>Files</Column>
                         <Column>Creator</Column>
-                        <Column></Column>
                         <ActionsColumn/>
                     </tr>
                     </thead>
@@ -73,9 +86,9 @@ export default function List() {
                                 <td>
                                     {row.user.name} {row.user.surname}
                                 </td>
-                                <RestoreButton id={row.id}/>
-                                <Actions
+                                <RestoreableActions
                                     edit={"/submission/" + row.id + "/edit"}
+                                    restore_url={"/api/submission/" + row.id + "/restore"}
                                 />
                             </tr>;
                         }

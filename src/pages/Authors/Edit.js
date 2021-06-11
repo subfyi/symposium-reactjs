@@ -1,62 +1,82 @@
-import React, {Component} from 'react';
-import {Col,  FormGroup, Input, Label} from 'reactstrap';
-import CommonForm from '../../common/GenelForm';
+import React from 'react';
+import {Card, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
+import {useEntity} from "react-admin-base";
+import {EntityEditor} from 'react-admin-base-adminkit';
+import {Breadcrumb} from 'react-admin-base-adminkit';
 import {Validator} from 'react-admin-base-adminkit';
-class Add extends Component {
-    render() {
-        return (
-            <CommonForm
-                name="menu.Providers"
-                nameKey="name"
-                nameSave="general.add_new"
+import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
+import {useUser} from "../../Components/UserProvider";
 
-                url="/api/keywords"
-                redirect="/keywords"
-                id={this.props.match.params.id}
-                {...this.props}
-            >
-                {
-                    controller => <>
+export default function EditCreate({match}) {
+    const id = match.params.id;
 
-                        <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Type</Label>
-                            </Col>
-                            <Col xs="12" md="9">
-                                <Validator
-                                    name="name"
-                                    type="required"
-                                    controller={controller}>
-                                    <Input type="text"
-                                           value={controller.state.type}
-                                           onChange={a => controller.setState({type: a.currentTarget.value})}
-                                    />
-                                </Validator>
-                            </Col>
-                        </FormGroup>
-                        <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Name</Label>
-                            </Col>
-                            <Col xs="12" md="9">
-                                <Validator
-                                    name="name"
-                                    type="required"
-                                    controller={controller}>
-                                    <Input type="text"
-                                           value={controller.state.name}
-                                           onChange={a => controller.setState({name: a.currentTarget.value})}
-                                    />
-                                </Validator>
-                            </Col>
-                        </FormGroup>
-                    </>
-                }
-            </CommonForm>
-        );
-    }
+    const user = useUser();
+    const entity = useEntity('/api/author', id, { role: user.role });
+    const [data, setData] = entity;
+
+    return <>
+        <Breadcrumb
+            title="Profile"
+            data={
+                [
+                    {
+                        href: '/profil',
+                        name: 'Profile'
+                    }
+                ]
+            }
+        />
+        <EntityEditor entity={entity}>
+            <Card>
+                <CardBody>
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Name</Label>
+                        </Col>
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="name"
+                                type="required"
+                            >
+                                <Input type="text" value={data.first_name}
+                                       onChange={a => setData({first_name: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+
+
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Surname</Label>
+                        </Col>
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="surname"
+                                type="required"
+                            >
+                                <Input type="text" value={data.last_name}
+                                       onChange={a => setData({last_name: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+
+
+                    <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">E-Mail Address</Label>
+                        </Col>
+                        <Col xs="3" md="3">
+                            <Validator
+                                name="email"
+                                type="required"
+                            >
+                                <Input type="text" value={data.email}
+                                       onChange={a => setData({email: a.currentTarget.value})}/>
+                            </Validator>
+                        </Col>
+                    </FormGroup>
+                </CardBody>
+            </Card>
+        </EntityEditor>
+    </>;
 }
-
-export default Add;
-
-

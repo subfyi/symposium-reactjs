@@ -3,6 +3,7 @@ import {BootstrapDataTable, Breadcrumb, Column} from 'react-admin-base-adminkit'
 import {Card, CardBody, Table} from "reactstrap";
 import {Link} from "react-router-dom";
 
+const params = { itemPerPage: 50 };
 export default class Orals extends Component {
     render() {
 
@@ -35,6 +36,7 @@ export default class Orals extends Component {
                 <CardBody>
                     <BootstrapDataTable
                         url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&orals=1&year=2021&presentation=1"
+                        defaultParams={params}
                         {...this.props}>
                         <thead>
                         <tr>
