@@ -22,6 +22,8 @@ export default function List() {
                     <thead>
                     <tr>
                         <IdColumn/>
+                        {user.role >= 8 && <Column sort="paper_approved">P. Approved</Column>}
+                        {user.role >= 8 && <Column sort="video_approved">Approved</Column>}
                         <Column sort="created_at">Sended Date</Column>
                         <Column sort="en_title">Title of Abstract</Column>
                         <Column sort="topic.value">Topic of Article</Column>
@@ -38,6 +40,8 @@ export default function List() {
                         row => {
                             return <tr>
                                 <td>{row.id}</td>
+                                {user.role >= 8 &&  <td>{row.paper_approved}</td>}
+                                {user.role >= 8 &&  <td>{row.video_approved}</td>}
                                 <td><Moment format="DD.MM.YYYY HH.mm" date={new Date(row.created_at)}/></td>
                                 <td>{row.en_title}</td>
                                 <td>{row.topic && row.topic.value}</td>
@@ -84,6 +88,7 @@ export default function List() {
                             header={[
                                 "ID",
                                 "Creation Date",
+                                "Approved",
                                 "Sended",
                                 "Title",
                                 "Topic",
@@ -95,6 +100,7 @@ export default function List() {
                             map={paper => [
                                 paper.id,
                                 new Date(paper.created_at),
+                                paper.video_approved,
                                 paper.en_title,
                                 paper.topic && paper.topic.value,
                                 paper.parampap && paper.parampap.value,

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, IdColumn} from 'react-admin-base-adminkit';
-import {Card, CardBody, FormGroup, Table} from "reactstrap";
+import {BootstrapDataTable, Breadcrumb, Column} from 'react-admin-base-adminkit';
+import {Card, CardBody, Table} from "reactstrap";
 import {Link} from "react-router-dom";
 
 export default class Orals extends Component {
