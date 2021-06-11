@@ -40,10 +40,10 @@ export default function Router() {
     const user = useUser();
 
     return <Switch>
-        <Redirect exact from="/" to="/submissions"/>
-        <Redirect exact from="/login" to="/submissions"/>
-        <Redirect exact from="/register" to="/submissions"/>
-        <Redirect exact from="/logout" to="/submissions"/>
+        <Redirect exact from="/" to="/presentation/oral"/>
+        <Redirect exact from="/login" to="/presentation/oral"/>
+        <Redirect exact from="/register" to="/presentation/oral"/>
+        <Redirect exact from="/logout" to="/presentation/oral"/>
 
         <Route path="/submission/deleted" component={SubmissionDeleted}/>
         <Route path="/submission/:id/edit" component={SubmissionEdit}/>
