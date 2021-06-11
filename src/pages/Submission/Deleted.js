@@ -7,7 +7,7 @@ import {useUser} from "../../Components/UserProvider";
 
 export function RestoreButton({id}) {
     return <td>
-        <a href={process.env.REACT_APP_ENDPOINT + "api/submission/" + id + "/restore"}><Button outline color="primary"> <i className="fa fa-recycle"/></Button></a>
+        <a href={process.env.REACT_APP_ENDPOINT + "api/submission/" + id + "/restore"}><Button outline color="primary"> <i className="fa fa-undo"/></Button></a>
     </td>;
 }
 

@@ -12,7 +12,7 @@ export default injectIntl(function MenuSidebar() {
             <Menu title={"My Paper"} to="/submissions" icon="fas fa-book-reader"/>
             {user.role >= 8 && <Menu title={"Deleted"} to="/submission/deleted" icon="fas fa-trash-alt"/> }
         </MenuGroup>
-        {user.role >= 8 &&
+        {user.role >= 0 &&
         <MenuGroup title="Presentations">
             <Menu title={"Oral Presentations"} to="/presentation/oral" icon="far fa-file-video"/>
             <Menu title={"Poster Presentations"} to="/presentation/poster" icon="fas fa-file-powerpoint"/>

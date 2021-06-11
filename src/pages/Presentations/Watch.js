@@ -30,7 +30,32 @@ function WatchSlug({match}) {
     >
         {data && data.id && +id !== +data.id && <Redirect to={"/submission/" + data.id + "/edit"}/>}
         <EntityEditor entity={entity}>
-            {data.video &&  <Card>
+
+            <Card>
+                <CardHeader>
+                    <b>Title</b>: {data.en_title}
+                </CardHeader>
+                <CardBody>
+                    <p>
+                        <b>Author(s)</b>: {data.authors && data.authors.map((author, index) =>
+                        <>{author.first_name} {author.last_name}
+                            {!!author.correspond && <>(Correspond)</>}
+                            {!!author.presenter && <span>{'('}Presenter{')'}</span>}{", "}
+                        </>
+                    )}
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Abstract</b>: {data.en_abstract}
+                    </p>
+                    <hr/>
+                    <p>
+                        <b>Keyword(s)</b>: {(data.pap_keyword || " ").split('|').toString()}
+                    </p>
+                </CardBody>
+            </Card>
+
+            {data.video && <Card>
 
                 <AspectRatio ratio="16/9" style={{width: '100%'}}>
                     <iframe style={{width: '100%'}} frameBorder="0" src={`https://drive.google.com/file/d/${data.video.g_dosyaismi}/preview`} allowFullScreen/>
@@ -48,35 +73,12 @@ function WatchSlug({match}) {
                 </AspectRatio>
 
             </Card>*/}
-            <Card>
-                <CardHeader>
-                    Title:{data.en_title}
-                </CardHeader>
-                <CardBody>
 
-                    <p>
-                        {data.authors && data.authors.map((author, index) =>
-                            <>{author.first_name} {author.last_name}
-                                {!!author.correspond && <>(Correspond)</>}
-                                {!!author.presenter && <span>{'('}Presenter{')'}</span>}{", "}
-                            </>
-                        )}
-                    </p>
-                    <hr/>
-                    <p>
-                        <b>Abstract</b>: {data.en_abstract}
-                    </p>
-                    <hr/>
-                    <p>
-                        <b>Keyword</b>: {(data.pap_keyword || " ").split('|').toString()}
-                    </p>
-                </CardBody>
-            </Card>
-                <Detay
-                    value={data.icerikler}
-                    onChange={val => setData({icerikler: val})}
-                    onSave={save}
-                />
+            <Detay
+                value={data.icerikler}
+                onChange={val => setData({icerikler: val})}
+                onSave={save}
+            />
 
 
         </EntityEditor>

@@ -56,7 +56,7 @@ export default class Posters extends Component {
                                         {!!author.presenter && <>(Presenter)</>}
                                     </div>)}
                                     </td>
-                                    <th><Link to={"/presentation/" + row.id + "/watch"} className="btn btn-sm btn-outline-primary"><i className="fas fa-eye"/> Watch</Link></th>
+                                    <th><Link to={"/presentation/" + row.id + "/watch"} className="btn btn-sm btn-outline-primary"><i className="fas fa-eye"/> Look</Link></th>
 
                                 </tr>;
                             }
