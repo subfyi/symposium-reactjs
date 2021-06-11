@@ -210,7 +210,7 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 0)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -229,7 +229,7 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".pdf"
-                                    disabled={!(user.role >= 0)}
+                                    disabled={!(user.role >= 8)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
                                 />
@@ -244,7 +244,7 @@ function EditCreateSlug({match}) {
                                 <UploadConfigGDrive>
                                     <SingleFilePicker
                                         accepts={user.role >= 8 ? "" : ".mp4"}
-                                        disabled={!(user.role >= 0)}
+                                        disabled={!(user.role >= 8)}
                                         value={data.video}
                                         onChange={a => setData({video: a})}
                                     />

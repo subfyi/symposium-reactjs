@@ -22,8 +22,8 @@ export default function List() {
                     <thead>
                     <tr>
                         <IdColumn/>
-                        {user.role >= 8 && <Column sort="paper_approved">P. Approved</Column>}
-                        {user.role >= 8 && <Column sort="video_approved">Approved</Column>}
+                        {user.role >= 8 && <Column sort="paper_approved">P. App.</Column>}
+                        {user.role >= 8 && <Column sort="video_approved">V. App.</Column>}
                         <Column sort="created_at">Sended Date</Column>
                         <Column sort="en_title">Title of Abstract</Column>
                         <Column sort="topic.value">Topic of Article</Column>
