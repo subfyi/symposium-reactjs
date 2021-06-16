@@ -1,7 +1,10 @@
 import "react-admin-base-adminkit/assets/app.css";
 import './App.scss';
 
-import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, RegisterRoute } from 'react-admin-base';
+import {useEffect} from "react";
+import {Route, Switch} from "react-router-dom";
+
+import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, RegisterRoute, useAuth} from 'react-admin-base';
 import {MainLayout, Reset, LanguageProvider, Login} from 'react-admin-base-adminkit';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
@@ -20,6 +23,29 @@ const languages = {
     }
 };
 
+function DemoLoggingIn({children}) {
+    const [api, isLoggedIn] = useAuth();
+
+    useEffect(function () {
+        api.log_in('demo@demo.com', 'demo');
+    }, []);
+
+    return null;
+}
+
+
+function DemoLogin({children}) {
+    const [_, isLoggedIn] = useAuth();
+
+    if (isLoggedIn)
+        return null;
+
+    return <Switch>
+        <Route path="/guest" component={DemoLoggingIn}/>
+        {children}
+    </Switch>;
+}
+
 function BaseApp() {
     return (
         <App
@@ -29,11 +55,12 @@ function BaseApp() {
             endpoint={process.env.REACT_APP_ENDPOINT}
         >
             <LanguageProvider defaultLanguage="en" languages={languages}>
-                            <AuthProvider
-                        tokenEndpoint="/oauth/token"
-                        client_id="2"
-                        client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
-                    >
+                <AuthProvider
+                    tokenEndpoint="/oauth/token"
+                    client_id="2"
+                    client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
+                >
+                    <DemoLogin>
                         <NotAuthorized>
                             <LoginRoute>
                                 <Login/>
@@ -42,22 +69,23 @@ function BaseApp() {
                                 <Reset/>
                             </ForgotPasswordRoute>
                             <RegisterRoute>
-                                <Register />
+                                <Register/>
                             </RegisterRoute>
                         </NotAuthorized>
-                        <Authorized>
-                            <UserProvider>
-                                <UploadConfig>
-                                    <MainLayout bg='/bg.png' bgColor="#222">
-                                        <MenuHeader/>
-                                        <MenuSidebar/>
-                                        <Router/>
-                                        <Footer/>
-                                    </MainLayout>
-                                </UploadConfig>
-                            </UserProvider>
-                        </Authorized>
-                    </AuthProvider>
+                    </DemoLogin>
+                    <Authorized>
+                        <UserProvider>
+                            <UploadConfig>
+                                <MainLayout bg='/bg.png' bgColor="#222">
+                                    <MenuHeader/>
+                                    <MenuSidebar/>
+                                    <Router/>
+                                    <Footer/>
+                                </MainLayout>
+                            </UploadConfig>
+                        </UserProvider>
+                    </Authorized>
+                </AuthProvider>
             </LanguageProvider>
         </App>
     );

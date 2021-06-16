@@ -24,10 +24,11 @@ function UserPart() {
 
     return <Dropdown isOpen={show} toggle={() => setShow(!show)}>
         <DropdownToggle nav caret>
-            Hello, <b>{user.name + user.surname}</b>
+            Hello, <b>{user.name + " " + user.surname}</b>
         </DropdownToggle>
         <DropdownMenu right>
-            <DropdownItem tag={Link} to="/profile">Profile</DropdownItem>
+
+            {user.role >= 1 && <DropdownItem tag={Link} to="/profile">Profile</DropdownItem>}
             <DropdownItem divider/>
             <DropdownItem onClick={logout}>Logout</DropdownItem>
             <DropdownItem divider/>

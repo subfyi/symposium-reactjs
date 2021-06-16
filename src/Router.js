@@ -45,10 +45,10 @@ export default function Router() {
         <Redirect exact from="/register" to="/presentation/oral"/>
         <Redirect exact from="/logout" to="/presentation/oral"/>
 
-        <Route path="/submission/deleted" component={SubmissionDeleted}/>
-        <Route path="/submission/:id/edit" component={SubmissionEdit}/>
+        {user.role >= 1 && <Route path="/submission/deleted" component={SubmissionDeleted}/>}
+        {user.role >= 1 && <Route path="/submission/:id/edit" component={SubmissionEdit}/>}
         {user.role >= 8 && <Route path="/submission/create" component={SubmissionEdit}/>}
-        <Route path="/submissions" component={Submission}/>
+        {user.role >= 1 && <Route path="/submissions" component={Submission}/>}
 
         <Route path="/presentation/:id/watch" component={WatchPresentation}/>
         <Route path="/presentation/oral" component={PresentationOral}/>
@@ -86,7 +86,7 @@ export default function Router() {
         {user.role >= 8 && <Route path="/user/:id/edit" component={UserEC}/>}
         {user.role >= 8 && <Route path="/user" component={User}/>}
 
-        <Route path="/profile" component={Profile}/>
+        {user.role >= 1 && <Route path="/profile" component={Profile}/>}
 
         <Redirect to="/submissions"/>
     </Switch>;
