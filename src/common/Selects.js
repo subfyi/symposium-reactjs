@@ -43,6 +43,6 @@ export function UserSelect(props) {
 
 export function YearSelect(props) {
     return <ApiSelect {...props} idKey="title_year" url={"/api/submission/years"}>
-        { row => row.title_year || 'Eksik' }
+        { row => +row.title_year || 'Empty' }
     </ApiSelect>;
 }
