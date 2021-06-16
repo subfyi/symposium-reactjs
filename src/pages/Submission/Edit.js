@@ -6,7 +6,7 @@ import {Breadcrumb} from 'react-admin-base-adminkit';
 import {Redirect} from 'react-router-dom';
 import {Validator} from 'react-admin-base-adminkit';
 import {useUser} from "../../Components/UserProvider";
-import {ParameterSelect} from "../../common/Selects";
+import {ParameterSelect, UserSelect} from "../../common/Selects";
 import UploadConfigGDrive from "../../UploadConfigGDrive";
 import AuthorSelector from "./AuthorSelector";
 
@@ -252,6 +252,17 @@ function EditCreateSlug({match}) {
                             </Col>
                         </FormGroup>
                     )}
+                    {user.role >= 8 && <FormGroup row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Creator</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <UserSelect
+                                value={data.user}
+                                onChange={a => setData({ user: a })}
+                            />
+                        </Col>
+                    </FormGroup> }
                     <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Prefered Publish Type</Label>

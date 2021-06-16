@@ -34,3 +34,15 @@ export function JournalSelect(props) {
 export function AuthoritySelect(props) {
     return <ApiSelect {...props} url="/api/roles" />;
 }
+
+export function UserSelect(props) {
+    return <ApiSelect {...props} url={"/api/user"}>
+        { row => <>{ row.name } { row.surname }</> }
+    </ApiSelect>;
+}
+
+export function YearSelect(props) {
+    return <ApiSelect {...props} idKey="title_year" url={"/api/submission/years"}>
+        { row => row.title_year || 'Eksik' }
+    </ApiSelect>;
+}

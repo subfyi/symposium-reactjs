@@ -1,11 +1,23 @@
 import React from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn} from 'react-admin-base-adminkit';
-import {Card, CardBody, FormGroup} from "reactstrap";
+import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-adminkit';
+import {Card, CardBody, Col, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
 import {useUser} from "../../Components/UserProvider";
+import {YearSelect} from "../../common/Selects";
 
-const params = { itemPerPage: 50 };
+const params = { itemPerPage: 50, year: 2021 };
+
+function YearFilter() {
+    const [params, setParams] = useDataTableContext();
+
+    return <Col>
+        <YearSelect
+            value={params.year && { title_year: params.year}}
+            onChange={a => setParams({ year: a.title_year})}
+        />
+    </Col>
+}
 
 export default function List() {
     const user = useUser();
@@ -19,7 +31,7 @@ export default function List() {
         <Card>
             <CardBody>
                 <BootstrapDataTable
-                    url="/api/submission?year=2021"
+                    url="/api/submission"
                     defaultParams={params}
                 >
                     <thead>
@@ -113,6 +125,7 @@ export default function List() {
                                 paper.authors.map(a => a.email).join(", ")
                             ]}
                         />
+                        { user.role >= 8 && <YearFilter /> }
                     </>
                 </BootstrapDataTable>
             </CardBody>
