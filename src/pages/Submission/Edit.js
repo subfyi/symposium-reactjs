@@ -210,7 +210,7 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
-                                    disabled={!(user.role >= 0)}
+                                    disabled={!(user.role >= 8)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
