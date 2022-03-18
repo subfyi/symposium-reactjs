@@ -1,6 +1,6 @@
 import {BootstrapTable, Actions, ActionsColumn, Column, IdColumn} from 'react-admin-base-bootstrap';
 import React from 'react';
-import {Breadcrumb} from "react-admin-base-adminkit";
+import {Breadcrumb} from "react-admin-base-front";
 import {Card, CardBody} from "reactstrap";
 import {useUser} from "../../Components/UserProvider";
 

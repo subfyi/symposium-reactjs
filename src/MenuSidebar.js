@@ -1,5 +1,5 @@
 import React from 'react';
-import {Sidebar, Menu, MenuGroup} from 'react-admin-base-adminkit';
+import {Sidebar, Menu, MenuGroup} from 'react-admin-base-front';
 import {useUser} from "./Components/UserProvider";
 import {FormattedMessage, injectIntl} from 'react-intl';
 

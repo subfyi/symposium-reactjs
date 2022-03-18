@@ -3,7 +3,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {Link} from "react-router-dom";
 import {useUser} from "./Components/UserProvider";
 import {useAuth, useApp} from "react-admin-base";
-import {Header} from 'react-admin-base-adminkit';
+import {Header} from 'react-admin-base-front';
 
 function UserPart() {
     const user = useUser();
@@ -41,15 +41,6 @@ export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
     const app = useApp();
 
     return <Header>
-        {!leftMenuOpen && <img src={app.logo} alt={app.name} className="brand-image text-white mr-3"/>}
-        <a className="sidebar-toggle d-flex" onClick={toggleLeftMenu}>
-            <i className="hamburger align-self-center "/>
-        </a>
-        {leftMenuOpen ?
-            <a className="extra-sidebar-toggle" onClick={toggleLeftMenu}></a> :
-            <a className="extra-sidebar-toggle-closed" onClick={toggleLeftMenu}></a>
-        }
-
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/" target="_blank" rel="noreferrer">
             Home
         </a>

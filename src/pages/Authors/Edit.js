@@ -2,7 +2,7 @@ import React from 'react';
 import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {EntityEditor} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-adminkit";
+import {Breadcrumb} from "react-admin-base-front";
 import {Validator} from 'react-admin-base-bootstrap';
 import {useUser} from "../../Components/UserProvider";
 

@@ -3,7 +3,7 @@ import {Alert, Card, CardBody, Col, Form, FormGroup, Input, Label, Row} from 're
 import { useAuth, ValidatorProvider } from 'react-admin-base';
 import {Validator, LoadingButton} from "react-admin-base-bootstrap";
 import {FormattedMessage} from "react-intl";
-import Layout from "react-admin-base-adminkit/lib/esm/Auth/Layout";
+import Layout from "react-admin-base-front/lib/esm/Auth/Layout";
 
 export default function Register() {
     const [ api ] = useAuth();

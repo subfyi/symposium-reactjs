@@ -1,4 +1,3 @@
-import "react-admin-base-adminkit/assets/app.css";
 import './App.scss';
 
 import {useEffect} from "react";
@@ -6,7 +5,7 @@ import {Route, Switch} from "react-router-dom";
 
 import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, RegisterRoute, useAuth} from 'react-admin-base';
 import { LanguageProvider } from 'react-admin-base-bootstrap';
-import {  Login, MainLayout, Reset } from 'react-admin-base-adminkit';
+import {  Login, MainLayout, Reset } from 'react-admin-base-front';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
 import MenuHeader from "./MenuHeader";
@@ -66,7 +65,8 @@ function BaseApp() {
         <App
             id="iseser"
             name="ISESER PORTAL"
-            logo="/logo.png"
+            logo="/logo-light.png"
+            onlylogo="/logo.png"
             endpoint={process.env.REACT_APP_ENDPOINT}
         >
             <LanguageProvider defaultLanguage="en" languages={languages}>

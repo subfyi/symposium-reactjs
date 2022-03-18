@@ -1,7 +1,7 @@
 import {version, contributors} from "../package.json";
 import React from "react";
 import {GoToTop} from 'react-admin-base-bootstrap';
-import {FooterLayout} from "react-admin-base-adminkit";
+import {FooterLayout} from "react-admin-base-front";
 
 export default function Footer() {
     return <FooterLayout>

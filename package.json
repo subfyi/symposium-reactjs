@@ -6,7 +6,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/subfyi/pearsonhousing-reactjs"
+      "url": "https://github.com/subfyi/symposium-reactjs"
     }
   ],
   "contributors": [
@@ -16,9 +16,9 @@
       "web": "https://sub.fyi/"
     },
     {
-      "name": "pearsonhousing",
-      "web": "https://pearsonhousing.com/",
-      "email": "info@pearsonhousing.com"
+      "name": "ISESER PORTAL",
+      "web": "https://iseser.com/",
+      "email": "iseser@iseser.com"
     }
   ],
   "license": "MIT",
@@ -37,8 +37,8 @@
     "query-string": "^7.0.0",
     "react": "^17.0.2",
     "react-admin-base": "^0.4.4",
-    "react-admin-base-adminkit": "^0.5.1",
-    "react-admin-base-bootstrap": "^0.5.1",
+    "react-admin-base-front": "^0.5.4",
+    "react-admin-base-bootstrap": "^0.5.4",
     "react-admin-base-ckeditor": "^0.1.2",
     "react-aspect-ratio": "^1.0.49",
     "react-color": "^2.19.3",
