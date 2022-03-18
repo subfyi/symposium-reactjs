@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {useDataTableContext} from "react-admin-base-adminkit";
+import {useDataTableContext} from "react-admin-base-bootstrap";
 import {JournalSelect, LanguageSelect} from "./Selects";
 
 export function LanguageFilter() {

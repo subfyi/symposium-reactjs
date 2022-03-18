@@ -1,9 +1,9 @@
 import React, {useCallback, useReducer, useState} from 'react';
 import {Alert, Card, CardBody, Col, Form, FormGroup, Input, Label, Row} from 'reactstrap';
 import { useAuth, ValidatorProvider } from 'react-admin-base';
-import Layout from 'react-admin-base-adminkit/es/Auth/Layout';
-import {Validator, LoadingButton} from "react-admin-base-adminkit";
+import {Validator, LoadingButton} from "react-admin-base-bootstrap";
 import {FormattedMessage} from "react-intl";
+import Layout from "react-admin-base-adminkit/lib/esm/Auth/Layout";
 
 export default function Register() {
     const [ api ] = useAuth();

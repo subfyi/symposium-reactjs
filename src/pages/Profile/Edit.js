@@ -1,9 +1,8 @@
 import React from 'react';
 import {Card, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
 import {useEntity} from "react-admin-base";
-import {EntityEditor} from 'react-admin-base-adminkit';
-import {Breadcrumb} from 'react-admin-base-adminkit';
-import {Validator} from 'react-admin-base-adminkit';
+import {EntityEditor,Validator} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-adminkit";
 import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
 
 export default function Edit() {

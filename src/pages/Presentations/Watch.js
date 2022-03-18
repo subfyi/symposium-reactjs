@@ -4,7 +4,8 @@ import {Card, CardBody, CardHeader} from "reactstrap";
 import {useUser} from "../../Components/UserProvider";
 import {useEntity} from "react-admin-base";
 import {Redirect} from "react-router-dom";
-import {Breadcrumb, EntityEditor} from "react-admin-base-adminkit";
+import {EntityEditor} from "react-admin-base-bootstrap";
+import {Breadcrumb} from "react-admin-base-adminkit";
 import AspectRatio from "react-aspect-ratio";
 import Detay from "./Detay";
 

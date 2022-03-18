@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, IdColumn} from 'react-admin-base-adminkit';
+import {Actions, ActionsColumn, BootstrapDataTable,  Column, IdColumn} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-adminkit";
 import {Card, CardBody} from "reactstrap";
 
 export default class List extends Component {

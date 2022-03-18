@@ -1,9 +1,9 @@
 import React from 'react';
 import {Input, CustomInput, Button, Row, Col, CardFooter} from 'reactstrap';
 import {AuthorSelect} from "../../common/Selects";
-import { Validator } from 'react-admin-base-adminkit';
+import { Validator } from 'react-admin-base-bootstrap';
 import { MultiValue } from 'react-admin-base';
-import { ValueValidator } from 'react-admin-base-adminkit/es/Common/Validator'
+import { ValueValidator } from 'react-admin-base-bootstrap/lib/esm/Components/Validator'
 import {useUser} from "../../Components/UserProvider";
 
 export default function AuthorSelector({ value, onChange }) {

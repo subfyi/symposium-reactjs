@@ -4,7 +4,7 @@ import {
     Label
 } from 'reactstrap';
 import CommonForm from '../../common/GenelForm';
-import { Validator } from 'react-admin-base-adminkit';
+import { Validator } from 'react-admin-base-bootstrap';
 import Switch from "@material-ui/core/Switch";
 import {ParameterSelect} from "../../common/Selects";
 

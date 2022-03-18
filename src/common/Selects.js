@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {ApiSelect} from "react-admin-base-adminkit";
+import {ApiSelect} from "react-admin-base-bootstrap";
 import {FormattedMessage} from "react-intl";
 
 export function AuthorSelect(props) {

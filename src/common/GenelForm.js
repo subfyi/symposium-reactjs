@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card, CardBody} from 'reactstrap';
-import {Breadcrumb, EntityEditor} from 'react-admin-base-adminkit';
+import {EntityEditor} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-adminkit";
 import {useEntity} from "react-admin-base";
 import {FormattedMessage} from 'react-intl';
 import {Redirect} from "react-router-dom";

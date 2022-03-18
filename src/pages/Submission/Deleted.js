@@ -1,5 +1,6 @@
 import React, {useCallback} from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Breadcrumb, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-adminkit';
+import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-adminkit";
 import {Button, Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";

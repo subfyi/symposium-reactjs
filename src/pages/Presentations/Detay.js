@@ -1,8 +1,8 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, ButtonGroup, Card, CardBody, CardHeader, Table} from 'reactstrap';
 import Moment from 'react-moment';
 import {CKEditor} from "react-admin-base-ckeditor";
-import {SingleFilePicker} from "react-admin-base-adminkit";
+import {SingleFilePicker} from "react-admin-base-bootstrap";
 import {useUser} from "../../Components/UserProvider";
 
 export default function Detay({value, onSave, onChange}) {

@@ -5,7 +5,7 @@ import {
 } from 'reactstrap';
 
 import CommonForm from '../../common/GenelForm';
-import {Validator} from "react-admin-base-adminkit";
+import {Validator} from "react-admin-base-bootstrap";
 
 class Edit extends Component {
     constructor(props) {
