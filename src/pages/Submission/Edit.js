@@ -1,51 +1,36 @@
 import React from 'react';
-import {EntityEditor, SingleFilePicker} from 'react-admin-base-bootstrap';
-import {Card, CustomInput, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
+import {CheckBox, EntityEditor, SingleFilePicker} from 'react-admin-base-bootstrap';
+import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
-import {Breadcrumb} from "react-admin-base-front";
-import {Redirect} from 'react-router-dom';
+import {Breadcrumb} from "react-admin-base-nazox";
+import {Navigate, useParams} from 'react-router-dom';
 import {Validator} from 'react-admin-base-bootstrap';
 import {useUser} from "../../Components/UserProvider";
 import {ParameterSelect, UserSelect} from "../../common/Selects";
-import UploadConfigGDrive from "../../UploadConfigGDrive";
 import AuthorSelector from "./AuthorSelector";
 
-export default function EditCreate(props) {
 
-    const id = props.match.params.id;
-    return <EditCreateSlug
-        key={id}
-        {...props}
-    />
-}
-
-function EditCreateSlug({match}) {
-    const id = match.params.id;
-
-    const user = useUser();
-    const entity = useEntity('/api/submission', id);
+export default function PostEntity() {
+    const {id} = useParams();
+    const entity = useEntity('/api/submission', id, {values: {}});
     const [data, setData] = entity;
+    const user = useUser();
 
     return <Breadcrumb
-        title={data.en_title}
         data={
             [
                 {
-                    href: '/submissions',
+                    href: '/submission',
                     name: 'Submission'
                 },
-                data.id && {
-                    href: '/submission/' + data.id,
-                    name: data.id
-                },
-                !data.id && {
-                    href: '/submission/create',
-                    name: 'Create'
+                {
+                    href: id ? '/submissions/' + data.id + '/edit' : '/submissions/create',
+                    name: id ? 'Edit' : 'Create'
                 }
             ]
         }
     >
-        {data && data.id && +id !== +data.id && <Redirect to={"/submission/" + data.id + "/edit"}/>}
+        {!id && data.id && <Navigate to={"/submission/" + data.id + "/edit"} replace/>}
         <EntityEditor entity={entity}>
             <Card>
                 <CardBody>
@@ -54,33 +39,17 @@ function EditCreateSlug({match}) {
                             <Label htmlFor="text-input">Paper Approved</Label>
                         </Col>
                         <Col xs="12" md="9">
-                            <CustomInput
-                                id="paper_approved"
+                            <CheckBox
                                 type="checkbox"
-                                checked={!!data.paper_approved}
+                                id="paper_approved"
+                                label="paper_approved"
+                                className="mb-3"
+                                checked={data.paper_approved}
                                 onChange={a => setData({paper_approved: a.currentTarget.checked ? 1 : 0})}
                             />
                         </Col>
                     </FormGroup>}
 
-                    {data.video && user && user.role >= 8 && <FormGroup row>
-                        <Col md="3">
-                            <Label htmlFor="text-input">Video Approved</Label>
-                        </Col>
-                        <Col xs="6" md="3">
-                            <CustomInput
-                                id="video_approved"
-                                type="checkbox"
-                                checked={!!data.video_approved}
-                                onChange={a => setData({video_approved: a.currentTarget.checked ? 1 : 0})}
-                            /> </Col>
-                        <Col xs="6" md="6">
-                            {data.video && <a href={data.video.access_url} target="_blank"
-                                              className=" btn btn-sm btn-outline-primary">
-                                Watch Presentation Video
-                            </a>}
-                        </Col>
-                    </FormGroup>}
                     <hr/>
 
                     {user.role >= 8 && <FormGroup row>
@@ -179,7 +148,7 @@ function EditCreateSlug({match}) {
                                 <ParameterSelect
                                     type="uygulamacon"
                                     value={data.parampre}
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 1)}
                                     onChange={a => setData({parampre: a})}
                                 />
                             </Validator>
@@ -192,7 +161,7 @@ function EditCreateSlug({match}) {
                         <Col xs="12" md="9">
                             <SingleFilePicker
                                 accepts=".doc,.docx"
-                                disabled={!(user.role >= 8)}
+                                disabled={!(user.role >= 1)}
                                 value={data.abstract_dosya}
                                 onChange={a => setData({abstract_dosya: a})}
                             />
@@ -210,7 +179,7 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 1)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -229,29 +198,13 @@ function EditCreateSlug({match}) {
                             >
                                 <SingleFilePicker
                                     accepts=".pdf"
-                                    disabled={!(user.role >= 8)}
+                                    disabled={!(user.role >= 1)}
                                     value={data.poster_presentation_dosya}
                                     onChange={a => setData({poster_presentation_dosya: a})}
                                 />
                             </Validator>
                         </Col>
                     </FormGroup>
-                    {(user.role >= 0 && <FormGroup row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Presentation File (.mp4)</Label>
-                            </Col>
-                            <Col xs="12" md="9">
-                                <UploadConfigGDrive>
-                                    <SingleFilePicker
-                                        accepts={user.role >= 8 ? "" : ".mp4"}
-                                        disabled={!(user.role >= 8) && data.video}
-                                        value={data.video}
-                                        onChange={a => setData({video: a})}
-                                    />
-                                </UploadConfigGDrive>
-                            </Col>
-                        </FormGroup>
-                    )}
                     {user.role >= 8 && <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Creator</Label>
@@ -259,10 +212,10 @@ function EditCreateSlug({match}) {
                         <Col xs="12" md="9">
                             <UserSelect
                                 value={data.user}
-                                onChange={a => setData({ user: a })}
+                                onChange={a => setData({user: a})}
                             />
                         </Col>
-                    </FormGroup> }
+                    </FormGroup>}
                     <FormGroup row>
                         <Col md="3">
                             <Label htmlFor="text-input">Prefered Publish Type</Label>

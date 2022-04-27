@@ -1,22 +1,33 @@
-import React, {Component} from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Column} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
-import {Card, CardBody} from "reactstrap";
 
-export default class List extends Component {
-    render() {
-        return <Breadcrumb data={[
-            {
-                name: "author",
-                href: '/author'
+import {Route, Routes} from "react-router-dom";
+import PostEntity from "./Edit";
+import {
+    Actions,
+    ActionsColumn,
+    BootstrapDataTable,
+    Column,
+} from "react-admin-base-bootstrap";
+import {Breadcrumb} from 'react-admin-base-nazox';
+import React from "react";
+
+export default function Posts() {
+    return <Routes>
+        <Route path="create" element={<PostEntity />} />
+        <Route path=":id/edit" element={<PostEntity />} />
+        <Route path="*" element={<Breadcrumb
+            title="Posts"
+            data={
+                [
+                    {
+                        href: '/author',
+                        name: 'Author'
+                    }
+                ]
             }
-        ]}>
-            <Card>
-                <CardBody>
+        >
                     <BootstrapDataTable
                         url="/api/author"
-                        add="/author/create"
-                        {...this.props}>
+                        add="/author/create">
                         <thead>
                         <tr>
                             <Column sort={"email"}>email</Column>
@@ -40,10 +51,6 @@ export default class List extends Component {
 
                         </tbody>
                     </BootstrapDataTable>
-                </CardBody>
-            </Card>
-        </Breadcrumb>;
-    }
+        </Breadcrumb>} />
+    </Routes>;
 }
-
-

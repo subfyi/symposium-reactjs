@@ -1,32 +1,21 @@
 import React from 'react';
-import {Card, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
+import {Card, CardBody, Col, FormGroup, Input, Label, ModalBody, Row} from "reactstrap";
 import {useEntity} from "react-admin-base";
-import {EntityEditor} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
-import {Validator} from 'react-admin-base-bootstrap';
-import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
+import {ModalEntityEditor, Validator} from 'react-admin-base-bootstrap';
 import {useUser} from "../../Components/UserProvider";
+import {AuthoritySelect, ParameterSelect} from '../../common/Selects';
 
-export default function EditCreate({match}) {
-    const id = match.params.id;
-
+export default function UserEntity({url, onReload, id}) {
     const user = useUser();
-    const entity = useEntity('/api/kullanicilar', id, { role: user.role });
+    const entity = useEntity('/api/kullanicilar', id, {role: user.role});
     const [data, setData] = entity;
 
-    return <>
-        <Breadcrumb
-            title="Profile"
-            data={
-                [
-                    {
-                        href: '/profil',
-                        name: 'Profile'
-                    }
-                ]
-            }
-        />
-        <EntityEditor entity={entity}>
+    if (!data) {
+        return null;
+    }
+
+    return <ModalEntityEditor size="xl" title="User Management" url={url} onReload={onReload} entity={entity}>
+        <ModalBody>
             <Card>
                 <CardBody>
                     <FormGroup row>
@@ -55,7 +44,6 @@ export default function EditCreate({match}) {
                             </Validator>
                         </Col>
                     </FormGroup>
-
 
                     <FormGroup row>
                         <Col md="3">
@@ -206,24 +194,24 @@ export default function EditCreate({match}) {
                         </Col>
                     </FormGroup>
 
-                        { user.role > 8 && <Row>
-                            <Col md="3">
-                                <Label htmlFor="text-input">Role</Label>
-                            </Col>
-                            <Col xs="12" md="9">
-                                <Validator
-                                    name="role"
-                                    type="required"
-                                >
-                                    <AuthoritySelect
-                                        value={data.role}
-                                        onChange={a => setData({role: a})}
-                                    />
-                                </Validator>
-                            </Col>
-                        </Row>}
+                    {user.role > 8 && <Row>
+                        <Col md="3">
+                            <Label htmlFor="text-input">Role</Label>
+                        </Col>
+                        <Col xs="12" md="9">
+                            <Validator
+                                name="role"
+                                type="required"
+                            >
+                                <AuthoritySelect
+                                    value={data.role}
+                                    onChange={a => setData({role: a})}
+                                />
+                            </Validator>
+                        </Col>
+                    </Row>}
                 </CardBody>
             </Card>
-        </EntityEditor>
-    </>;
+        </ModalBody>
+    </ModalEntityEditor>;
 }

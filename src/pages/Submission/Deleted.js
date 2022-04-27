@@ -1,10 +1,9 @@
 import React, {useCallback} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import {Button, Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
 import FileDownload from "../../common/FileDownload";
-import {useUser} from "../../Components/UserProvider";
 import {useAuth} from "react-admin-base";
 
 export function RestoreButton({url}) {
@@ -27,7 +26,6 @@ function RestoreableActions(props) {
 }
 
 export default function List() {
-    const user = useUser();
 
     return <Breadcrumb data={[
         {

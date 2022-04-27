@@ -1,23 +1,21 @@
 
-import React, {Component} from 'react';
-import {Actions, ActionsColumn, BootstrapDataTable, Column, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
-import {Card, CardBody} from "reactstrap";
+import React from 'react';
+import {Actions, ActionsColumn, Column, CRUD, IdColumn} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-nazox";
+import RoleEntity from "./RoleEntity";
 
-export default class List extends Component {
-    render() {
-        return <Breadcrumb data={[
-            {
-                name: "roles",
-                href: '/roles'
-            }
-        ]}>
-            <Card>
-                <CardBody>
-                    <BootstrapDataTable
-                        url="/api/roles"
-                        add="/roles/create"
-                        {...this.props}>
+export default function Roles() {
+    return <Breadcrumb
+        data={
+            [
+                {
+                    name: "roles",
+                    href: '/roles'
+                }
+            ]
+        }
+    >
+        <CRUD url="/api/roles" Component={RoleEntity}>
                         <thead>
                         <tr>
                             <IdColumn/>
@@ -37,12 +35,8 @@ export default class List extends Component {
                             </tr>
                         }
                         </tbody>
-                    </BootstrapDataTable>
-                </CardBody>
-            </Card>
+                    </CRUD>
         </Breadcrumb>;
     }
-}
-
 
 

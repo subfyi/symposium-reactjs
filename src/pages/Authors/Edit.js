@@ -2,12 +2,13 @@ import React from 'react';
 import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {EntityEditor} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import {Validator} from 'react-admin-base-bootstrap';
 import {useUser} from "../../Components/UserProvider";
+import {useParams} from "react-router-dom";
 
-export default function EditCreate({match}) {
-    const id = match.params.id;
+export default function PostEntity() {
+    const { id } = useParams();
 
     const user = useUser();
     const entity = useEntity('/api/author', id, { role: user.role });

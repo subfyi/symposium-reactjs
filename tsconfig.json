@@ -1,0 +1,10 @@
+{
+  "extends": "@tsconfig/create-react-app/tsconfig.json",
+  "compilerOptions": {
+    "noImplicitAny": false,
+    "checkJs": true
+  },
+  "include": [
+    "src"
+  ]
+}

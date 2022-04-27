@@ -1,7 +1,7 @@
 
 import React, {Component} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import {Card, CardBody} from "reactstrap";
 
 export default class List extends Component {

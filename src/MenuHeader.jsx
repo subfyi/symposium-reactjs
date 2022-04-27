@@ -3,7 +3,7 @@ import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {Link} from "react-router-dom";
 import {useUser} from "./Components/UserProvider";
 import {useAuth, useApp} from "react-admin-base";
-import {Header} from 'react-admin-base-front';
+import {Header} from 'react-admin-base-nazox';
 
 function UserPart() {
     const user = useUser();

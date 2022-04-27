@@ -5,7 +5,7 @@ import {useUser} from "../../Components/UserProvider";
 import {useEntity} from "react-admin-base";
 import {Redirect} from "react-router-dom";
 import {EntityEditor} from "react-admin-base-bootstrap";
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import AspectRatio from "react-aspect-ratio";
 import Detay from "./Detay";
 

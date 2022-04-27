@@ -1,2 +1,6 @@
-# Getting Started with Create React App
+# Symposium ReactJs Project
 
+```bash
+yarn install
+yarn run dev
+```

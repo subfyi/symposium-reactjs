@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import {Card, CardBody, Col, FormGroup} from "reactstrap";
 import {LanguageFilter} from "../../common/Filters";
 

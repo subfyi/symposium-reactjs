@@ -5,7 +5,7 @@ import {Route, Switch} from "react-router-dom";
 
 import {App, Authorized, ForgotPasswordRoute, LoginRoute, NotAuthorized, AuthProvider, RegisterRoute, useAuth} from 'react-admin-base';
 import { LanguageProvider } from 'react-admin-base-bootstrap';
-import {  Login, MainLayout, Reset } from 'react-admin-base-front';
+import {  Login, MainLayout, Reset } from 'react-admin-base-nazox';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
 import MenuHeader from "./MenuHeader";
@@ -36,29 +36,6 @@ const languages = {
     }
 };
 
-function DemoLoggingIn({children}) {
-    const [api, isLoggedIn] = useAuth();
-
-    useEffect(function () {
-        api.log_in('demo@demo.com', 'demo');
-    }, []);
-
-    return null;
-}
-
-
-function DemoLogin({children}) {
-    const [_, isLoggedIn] = useAuth();
-
-    if (isLoggedIn)
-        return null;
-
-    return <Switch>
-        <Route path="/guest" component={DemoLoggingIn}/>
-        {children}
-    </Switch>;
-}
-
 function BaseApp() {
     return (
         <BrowserRouter basename={process.env.REACT_APP_PATHBASE || undefined}>
@@ -75,7 +52,6 @@ function BaseApp() {
                     client_id="2"
                     client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
                 >
-                    <DemoLogin>
                         <NotAuthorized>
                             <LoginRoute>
                                 <Login/>
@@ -87,7 +63,6 @@ function BaseApp() {
                                 <Register/>
                             </RegisterRoute>
                         </NotAuthorized>
-                    </DemoLogin>
                     <Authorized>
                         <UserProvider>
                             <UploadConfig>

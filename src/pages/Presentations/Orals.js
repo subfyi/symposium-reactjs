@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {BootstrapDataTable, Column} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-front";
+import {Breadcrumb} from "react-admin-base-nazox";
 import {Card, CardBody, Table} from "reactstrap";
 import {Link} from "react-router-dom";
 
