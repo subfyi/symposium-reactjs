@@ -1,8 +1,8 @@
-import React, {useState, useCallback} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
 import {Link} from "react-router-dom";
 import {useUser} from "./Components/UserProvider";
-import {useAuth, useApp} from "react-admin-base";
+import {useAuth} from "react-admin-base";
 import {Header} from 'react-admin-base-nazox';
 
 function UserPart() {
@@ -37,8 +37,7 @@ function UserPart() {
     </Dropdown>;
 }
 
-export default function MenuHeader({leftMenuOpen, toggleLeftMenu}) {
-    const app = useApp();
+export default function MenuHeader() {
 
     return <Header>
         <a className="d-flex align-content-center p-2 text-muted" href="https://iseser.com/" target="_blank" rel="noreferrer">

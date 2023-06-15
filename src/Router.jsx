@@ -1,4 +1,4 @@
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 
 import {useUser} from './Components/UserProvider';
 
@@ -11,22 +11,16 @@ import Submission from "./pages/Submission/List";
 import SubmissionDeleted from "./pages/Submission/Deleted";
 
 import Author from "./pages/Authors/List";
-import AuthorEdit from "./pages/Authors/Edit";
 
 import Citations from "./pages/Citations/List";
-import CitationsEdit from "./pages/Citations/Edit";
 
 import Keywords from "./pages/Keywords/List";
-import KeywordsEdit from "./pages/Keywords/Edit";
 
 import Languages from "./pages/Languages/List";
-import LanguagesEdit from "./pages/Languages/Edit";
 
 import Publishers from "./pages/Publishers/List";
-import PublishersEdit from "./pages/Publishers/Edit";
 
 import Subjects from "./pages/Subjects/List";
-import SubjectsEdit from "./pages/Subjects/Edit";
 
 export default function Router() {
     const user = useUser();
