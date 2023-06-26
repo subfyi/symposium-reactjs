@@ -38,8 +38,8 @@ function YearFilter() {
 export default function Posts() {
     const user = useUser();
     return <Routes>
-        <Route path="create" element={<PostEntity/>}/>
         <Route path=":id/edit" element={<PostEntity/>}/>
+        <Route path="create" element={<PostEntity/>}/>
         <Route path="*" element={<Breadcrumb
             title="Submission"
             data={
@@ -52,6 +52,7 @@ export default function Posts() {
             }
         >
             <BootstrapDataTable
+                add={ "/submission/create"}
                 url="/api/submission"
                 defaultParams={params}
             >

@@ -1,10 +1,9 @@
 import React from 'react';
-import {CheckBox, EntityEditor, SingleFilePicker} from 'react-admin-base-bootstrap';
+import {CheckBox, EntityEditor, SingleFilePicker, Validator} from 'react-admin-base-bootstrap';
 import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {Breadcrumb} from "react-admin-base-nazox";
 import {Navigate, useParams} from 'react-router-dom';
-import {Validator} from 'react-admin-base-bootstrap';
 import {useUser} from "../../Components/UserProvider";
 import {ParameterSelect, UserSelect} from "../../common/Selects";
 import AuthorSelector from "./AuthorSelector";
