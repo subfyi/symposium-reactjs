@@ -36,7 +36,7 @@ export default function List() {
         <Card>
             <CardBody>
                 <BootstrapDataTable
-                    url="/api/submission?year=2021&pap_status=3"
+                    url="/api/submission?year=2023&pap_status=3"
                 >
                     <thead>
                     <tr>

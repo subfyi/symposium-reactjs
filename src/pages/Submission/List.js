@@ -1,6 +1,14 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
+import {
+    Actions,
+    ActionsColumn,
+    BootstrapDataTable,
+    Column,
+    ExcelExportButton,
+    IdColumn,
+    useDataTableContext
+} from 'react-admin-base-bootstrap';
 import {Breadcrumb} from "react-admin-base-nazox";
 import {Col} from "reactstrap";
 import Moment from "react-moment";
@@ -9,7 +17,12 @@ import {useUser} from "../../Components/UserProvider";
 import {YearSelect} from "../../common/Selects";
 import PostEntity from "./Edit";
 
-const params = {itemPerPage: 50, year: 2021};
+const params = {
+    itemPerPage: 50,
+    year: 2023,
+    sort: 'id',
+    desc: true
+};
 
 function YearFilter() {
     const [params, setParams] = useDataTableContext();

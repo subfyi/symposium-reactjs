@@ -35,7 +35,7 @@ export default class Posters extends Component {
             <Card>
                 <CardBody>
                     <BootstrapDataTable
-                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&posters=1&year=2021&presentation=1"
+                        url="/api/submission?page=1&itemPerPage=-1&query=&sort=id&desc=false&posters=1&year=2023&presentation=1"
                         {...this.props}>
                         <thead>
                         <tr>
