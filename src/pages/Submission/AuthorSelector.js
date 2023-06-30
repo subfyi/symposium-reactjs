@@ -135,7 +135,7 @@ export default function AuthorSelector({value, onChange}) {
                 <Col md="6">
                     <Button color="primary"
                             disabled={!(user.role >= 1)}
-                            block onClick={a => onChange((value || []).concat([{}]))}>Add Author</Button>
+                            block onClick={a => onChange((value || []).concat([{ presenter: false, correspond: false }]))}>Add Author</Button>
                 </Col>
             </Row>
         </CardFooter>
