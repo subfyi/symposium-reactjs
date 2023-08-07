@@ -30,6 +30,14 @@ export default injectIntl(function MenuSidebar() {
                 {user.role >= 1 && <Menu title={"Profile"} to="/profile" icon="fas fa-user"/>}
             </MenuGroup>
         }
+
+        <MenuGroup title="General">
+            <Menu title="Documents" to="https://iseser.com/documents" icon="fas fa-file"/>
+            <Menu title="Archives" to="https://iseser.com/documents-all" icon="fas fa-paste"/>
+            <Menu title="Contact" to="https://iseser.com/contact" icon="fas fa-phone"/>
+        </MenuGroup>
+
+
         {user.role >= 1 &&
             <MenuGroup title="Logout">
                 {user.role >= 1 && <Menu title={"Logout"} to="/logout" icon="fas fa-sign-out-alt"/>}
