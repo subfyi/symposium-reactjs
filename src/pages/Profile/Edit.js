@@ -1,9 +1,9 @@
 import React from 'react';
-import {Card, CardBody, Col, FormGroup, Input, Label, Row} from "reactstrap";
+import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
-import {EntityEditor,Validator} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
-import {AuthoritySelect, ParameterSelect} from "../../common/Selects";
+import {EntityEditor, Validator} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-falcon";
+import {ParameterSelect} from "../../components/Selects";
 
 export default function Edit() {
     const entity = useEntity('/api/user', 'me');

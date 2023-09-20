@@ -1,8 +1,8 @@
 import {useCallback, useState} from 'react';
 import {useAuth} from "react-admin-base";
-import {Header} from 'react-admin-base-nazox';
+import {Header} from 'react-admin-base-falcon';
 import {Dropdown, DropdownItem, DropdownMenu, DropdownToggle} from "reactstrap";
-import {useUser} from "./Components/UserProvider";
+import {useUser} from "./components/UserProvider";
 
 function UserPart() {
     const user = useUser();

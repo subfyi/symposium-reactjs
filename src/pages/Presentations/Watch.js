@@ -1,11 +1,11 @@
 import React from 'react';
 import 'react-aspect-ratio/aspect-ratio.css';
 import {Card, CardBody, CardHeader} from "reactstrap";
-import {useUser} from "../../Components/UserProvider";
+import {useUser} from "../../components/UserProvider";
 import {useEntity} from "react-admin-base";
 import {Redirect} from "react-router-dom";
 import {EntityEditor} from "react-admin-base-bootstrap";
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import AspectRatio from "react-aspect-ratio";
 import Detay from "./Detay";
 

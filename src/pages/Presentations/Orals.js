@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {BootstrapDataTable, Column} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import {Card, CardBody, Table} from "reactstrap";
 import {Link} from "react-router-dom";
 
-const params = { itemPerPage: 50 };
+const params = {itemPerPage: 50};
 export default class Orals extends Component {
     render() {
 

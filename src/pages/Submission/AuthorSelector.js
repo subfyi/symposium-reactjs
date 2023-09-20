@@ -1,10 +1,10 @@
 import React from 'react';
-import {Input, Button, Row, Col, CardFooter} from 'reactstrap';
-import {AuthorSelect} from "../../common/Selects";
+import {Button, CardFooter, Col, Input, Row} from 'reactstrap';
+import {AuthorSelect} from "../../components/Selects";
 import {CheckBox, Validator} from 'react-admin-base-bootstrap';
 import {MultiValue} from 'react-admin-base';
 import {ValueValidator} from 'react-admin-base-bootstrap/lib/esm/Components/Validator'
-import {useUser} from "../../Components/UserProvider";
+import {useUser} from "../../components/UserProvider";
 
 export default function AuthorSelector({value, onChange}) {
     const onChangeOriginal = onChange;
@@ -135,7 +135,7 @@ export default function AuthorSelector({value, onChange}) {
                 <Col md="6">
                     <Button color="primary"
                             disabled={!(user.role >= 1)}
-                            block onClick={a => onChange((value || []).concat([{ presenter: false, correspond: false }]))}>Add Author</Button>
+                            block onClick={a => onChange((value || []).concat([{presenter: false, correspond: false}]))}>Add Author</Button>
                 </Col>
             </Row>
         </CardFooter>

@@ -2,10 +2,10 @@ import React from 'react';
 import {CheckBox, EntityEditor, SingleFilePicker, Validator} from 'react-admin-base-bootstrap';
 import {Card, CardBody, Col, FormGroup, Input, Label} from "reactstrap";
 import {useEntity} from "react-admin-base";
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import {Navigate, useParams} from 'react-router-dom';
-import {useUser} from "../../Components/UserProvider";
-import {ParameterSelect, UserSelect} from "../../common/Selects";
+import {useUser} from "../../components/UserProvider";
+import {ParameterSelect, UserSelect} from "../../components/Selects";
 import AuthorSelector from "./AuthorSelector";
 
 

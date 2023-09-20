@@ -3,7 +3,7 @@ import {Button, ButtonGroup, Card, CardBody, CardHeader, Table} from 'reactstrap
 import Moment from 'react-moment';
 import {CKEditor} from "react-admin-base-ckeditor";
 import {SingleFilePicker} from "react-admin-base-bootstrap";
-import {useUser} from "../../Components/UserProvider";
+import {useUser} from "../../components/UserProvider";
 
 export default function Detay({value, onSave, onChange}) {
     const [editingRow, setEditingRow] = useState();

@@ -1,7 +1,7 @@
 import React from "react";
 import p from "../package.json";
 import {GoToTop} from 'react-admin-base-bootstrap';
-import {FooterLayout} from 'react-admin-base-nazox';
+import {FooterLayout} from 'react-admin-base-falcon';
 
 export default function Footer() {
     return <FooterLayout>

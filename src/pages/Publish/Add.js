@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
-import {
-    Col, CustomInput, FormGroup, Input,
-    Label
-} from 'reactstrap';
-import CommonForm from '../../common/GenelForm';
-import { Validator } from 'react-admin-base-bootstrap';
+import {Col, FormGroup, Input, Label} from 'reactstrap';
+import CommonForm from '../../components/GenelForm';
+import {Validator} from 'react-admin-base-bootstrap';
 import Switch from "@material-ui/core/Switch";
-import {ParameterSelect} from "../../common/Selects";
+import {ParameterSelect} from "../../components/Selects";
 
 class Add extends Component {
     render() {

@@ -1,5 +1,5 @@
 import {Actions, ActionsColumn, Column, CRUD, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from 'react-admin-base-nazox';
+import {Breadcrumb} from 'react-admin-base-falcon';
 import React from 'react';
 import UserEntity from "./UsersEntity";
 

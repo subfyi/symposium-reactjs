@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Col,  FormGroup, Input, Label} from 'reactstrap';
-import CommonForm from '../../common/GenelForm';
+import {Col, FormGroup, Input, Label} from 'reactstrap';
+import CommonForm from '../../components/GenelForm';
 import {Validator} from 'react-admin-base-bootstrap';
+
 class Add extends Component {
     render() {
         return (

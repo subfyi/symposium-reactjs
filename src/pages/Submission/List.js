@@ -1,20 +1,12 @@
 import React from 'react';
 import {Route, Routes} from "react-router-dom";
-import {
-    Actions,
-    ActionsColumn,
-    BootstrapDataTable,
-    Column,
-    ExcelExportButton,
-    IdColumn,
-    useDataTableContext
-} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
+import {Breadcrumb} from "react-admin-base-falcon";
 import {Col} from "reactstrap";
 import Moment from "react-moment";
-import FileDownload from "../../common/FileDownload";
-import {useUser} from "../../Components/UserProvider";
-import {YearSelect} from "../../common/Selects";
+import FileDownload from "../../components/FileDownload";
+import {useUser} from "../../components/UserProvider";
+import {YearSelect} from "../../components/Selects";
 import PostEntity from "./Edit";
 
 const params = {
@@ -52,7 +44,7 @@ export default function Posts() {
             }
         >
             <BootstrapDataTable
-                add={ "/submission/create"}
+                add={"/submission/create"}
                 url="/api/submission"
                 defaultParams={params}
             >

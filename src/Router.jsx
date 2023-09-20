@@ -1,6 +1,6 @@
 import {Navigate, Route, Routes} from 'react-router-dom';
 
-import {useUser} from './Components/UserProvider';
+import {useUser} from './components/UserProvider';
 
 import Profile from "./pages/Profile/Edit";
 import User from "./pages/User/Users";

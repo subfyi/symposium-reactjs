@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import {Card, CardBody, Col} from "reactstrap";
-import {LanguageFilter} from "../../common/Filters";
+import {LanguageFilter} from "../../components/Filters";
 
 export default class List extends Component {
     render() {

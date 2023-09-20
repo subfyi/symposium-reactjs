@@ -1,18 +1,18 @@
 import React from 'react';
-import {Card, CardBody, Col, FormGroup, Input, Label, ModalBody, Row} from "reactstrap";
+import {Card, CardBody, Col, FormGroup, Input, Label, ModalBody} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {ModalEntityEditor, Validator} from 'react-admin-base-bootstrap';
-import { FormattedMessage } from 'react-intl';
+import {FormattedMessage} from 'react-intl';
 
 export default function RoleEntity({url, onReload, id}) {
-    const entity = useEntity('/api/roles', id, {  });
+    const entity = useEntity('/api/roles', id, {});
     const [data, setData] = entity;
 
     if (!data) {
         return null;
     }
 
-    return <ModalEntityEditor  size="xl" title="Role Management" url={url} onReload={onReload} entity={entity}>
+    return <ModalEntityEditor size="xl" title="Role Management" url={url} onReload={onReload} entity={entity}>
         <ModalBody>
             <Card>
                 <CardBody>

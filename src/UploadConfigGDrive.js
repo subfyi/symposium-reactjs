@@ -1,8 +1,7 @@
-
-import React, { useCallback } from 'react';
+import React, {useCallback} from 'react';
 import {UploadProvider, useAuth} from "react-admin-base";
 import Axios from "axios";
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 function cozunurluk_bul(blob) {
     return new Promise(function (resolve) {
@@ -31,10 +30,10 @@ function abortToAxiosAbort(abort) {
 
 var fdosyasira = 0;
 
-export default function UploadConfigGDrive({ children }) {
-    const [ api ] = useAuth();
+export default function UploadConfigGDrive({children}) {
+    const [api] = useAuth();
 
-    const uploader = useCallback(async function(name, blob, contentType, abort, progress) {
+    const uploader = useCallback(async function (name, blob, contentType, abort, progress) {
         abort = abortToAxiosAbort(abort);
 
         var fsira = ++fdosyasira;
@@ -55,7 +54,7 @@ export default function UploadConfigGDrive({ children }) {
             var data = uploadResponse.data;
 
             await api.tokenized.put(data.upload_link, blob, {
-                onUploadProgress: function(progressEvent) {
+                onUploadProgress: function (progressEvent) {
                     progress(progressEvent.loaded / progressEvent.total);
                 },
                 cancelToken: abort
@@ -81,8 +80,8 @@ export default function UploadConfigGDrive({ children }) {
             });
 
             return uploadBitirResponse.data;
-        } catch(e) {
-            if(!Axios.isCancel(e)) {
+        } catch (e) {
+            if (!Axios.isCancel(e)) {
                 console.error('Hata olustu, tekrar deneniyor..', e);
                 //  return uploader(name, blob, contentType, abort, progress);
             } else {
@@ -91,10 +90,10 @@ export default function UploadConfigGDrive({ children }) {
 
             throw e;
         }
-    }, [ api ]);
+    }, [api]);
 
     return <UploadProvider uploader={uploader}>
-        { children }
+        {children}
     </UploadProvider>
 }
 

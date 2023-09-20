@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import GenelList from '../../common/GenelList';
+import GenelList from '../../components/GenelList';
 
 export default class List extends Component {
     render() {

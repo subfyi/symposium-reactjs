@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
-import GenelForm from '../../common/GenelForm';
-import SiparisDetay from './SiparisDetay';
+import GenelForm from '../../components/GenelForm';
 import AspectRatio from 'react-aspect-ratio';
 import 'react-aspect-ratio/aspect-ratio.css';
 import {Card, CardBody, CardHeader, CardHeaderToolbar} from '../../../_metronic/_partials/controls';

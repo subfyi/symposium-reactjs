@@ -1,7 +1,6 @@
-
 import React from 'react';
 import {Actions, ActionsColumn, Column, CRUD, IdColumn} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import RoleEntity from "./RoleEntity";
 
 export default function Roles() {
@@ -16,27 +15,27 @@ export default function Roles() {
         }
     >
         <CRUD url="/api/roles" Component={RoleEntity}>
-                        <thead>
-                        <tr>
-                            <IdColumn/>
-                            <Column>name</Column>
-                            <ActionsColumn/>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            row => <tr>
-                                <td>{row.id}</td>
-                                <td>{row.name}</td>
-                                <Actions
-                                    edit={`/roles/${row.id}/edit`}
-                                    del={`/api/roles/${row.id}`}
-                                />
-                            </tr>
-                        }
-                        </tbody>
-                    </CRUD>
-        </Breadcrumb>;
-    }
+            <thead>
+            <tr>
+                <IdColumn/>
+                <Column>name</Column>
+                <ActionsColumn/>
+            </tr>
+            </thead>
+            <tbody>
+            {
+                row => <tr>
+                    <td>{row.id}</td>
+                    <td>{row.name}</td>
+                    <Actions
+                        edit={`/roles/${row.id}/edit`}
+                        del={`/api/roles/${row.id}`}
+                    />
+                </tr>
+            }
+            </tbody>
+        </CRUD>
+    </Breadcrumb>;
+}
 
 

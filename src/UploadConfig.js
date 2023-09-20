@@ -1,5 +1,4 @@
-
-import React, { useCallback } from 'react';
+import React, {useCallback} from 'react';
 import {UploadProvider, useAuth} from "react-admin-base";
 import Axios from "axios";
 
@@ -28,26 +27,26 @@ function abortToAxiosAbort(abort) {
      */
 }
 
-export default function UploadConfig({ children }) {
-    const [ api ] = useAuth();
+export default function UploadConfig({children}) {
+    const [api] = useAuth();
 
-    const uploader = useCallback(async function(name, blob, contentType, abort, progress) {
+    const uploader = useCallback(async function (name, blob, contentType, abort, progress) {
         abort = abortToAxiosAbort(abort);
 
         try {
             var form = new FormData();
             form.append("dosya", blob, name);
 
-            if(contentType.indexOf("image/") !== 0) {
+            if (contentType.indexOf("image/") !== 0) {
                 var coz = await cozunurluk_bul(blob);
-                if(coz) {
+                if (coz) {
                     form.append("width", coz.width);
                     form.append("height", coz.height);
                 }
             }
 
             var data = await api.tokenized.post('/api/upload', form, {
-                onUploadProgress: progress && function(progressEvent) {
+                onUploadProgress: progress && function (progressEvent) {
                     progress(progressEvent.loaded / progressEvent.total);
                 },
                 cancelToken: abort
@@ -55,11 +54,11 @@ export default function UploadConfig({ children }) {
 
             let file = data.data;
 
-            file.access_url = process.env.REACT_APP_ENDPOINT.replace(/\/$/,'') + data.data.access_url;
+            file.access_url = process.env.REACT_APP_ENDPOINT.replace(/\/$/, '') + data.data.access_url;
 
             return file;
-        } catch(e) {
-            if(!Axios.isCancel(e)) {
+        } catch (e) {
+            if (!Axios.isCancel(e)) {
                 console.error('Hata olustu, tekrar deneniyor..', e);
 
                 throw e;
@@ -69,10 +68,10 @@ export default function UploadConfig({ children }) {
 
             throw e;
         }
-    }, [ api ]);
+    }, [api]);
 
     return <UploadProvider uploader={uploader}>
-        { children }
+        {children}
     </UploadProvider>
 }
 

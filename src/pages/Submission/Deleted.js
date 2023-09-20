@@ -1,9 +1,9 @@
 import React, {useCallback} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
-import {Breadcrumb} from "react-admin-base-nazox";
+import {Breadcrumb} from "react-admin-base-falcon";
 import {Button, Card, CardBody, FormGroup} from "reactstrap";
 import Moment from "react-moment";
-import FileDownload from "../../common/FileDownload";
+import FileDownload from "../../components/FileDownload";
 import {useAuth} from "react-admin-base";
 
 export function RestoreButton({url}) {

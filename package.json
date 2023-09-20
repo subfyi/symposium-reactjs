@@ -30,7 +30,7 @@
     "react-admin-base": "^0.8.5",
     "react-admin-base-bootstrap": "^0.8.13",
     "react-admin-base-ckeditor": "^0.2.4",
-    "react-admin-base-nazox": "^0.8.7",
+    "react-admin-base-falcon": "^0.8.7",
     "react-dom": "^18.2.0",
     "react-intl": "^6.3.2",
     "react-phone-input-2": "^2.15.1",

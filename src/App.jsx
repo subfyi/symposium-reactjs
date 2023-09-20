@@ -1,22 +1,14 @@
 import './App.scss';
 
 
-import {
-    App,
-    Authorized,
-    AuthProvider,
-    ForgotPasswordRoute,
-    LoginRoute,
-    NotAuthorized,
-    RegisterRoute
-} from 'react-admin-base';
+import {App, Authorized, AuthProvider, ForgotPasswordRoute, LoginRoute, NotAuthorized, RegisterRoute} from 'react-admin-base';
 import {LanguageProvider} from 'react-admin-base-bootstrap';
-import {Login, MainLayout, Reset} from 'react-admin-base-nazox';
+import {Login, MainLayout, Reset} from 'react-admin-base-falcon';
 import MenuSidebar from "./MenuSidebar";
 import Router from "./Router";
 import MenuHeader from "./MenuHeader";
 import Footer from "./Footer";
-import {UserProvider} from "./Components/UserProvider";
+import {UserProvider} from "./components/UserProvider";
 import UploadConfig from "./UploadConfig";
 import languageEn from './i18n/en.json';
 import Register from "./start/Register";

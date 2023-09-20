@@ -2,8 +2,8 @@ import React from 'react';
 import {Card, CardBody, Col, FormGroup, Input, Label, ModalBody, Row} from "reactstrap";
 import {useEntity} from "react-admin-base";
 import {ModalEntityEditor, Validator} from 'react-admin-base-bootstrap';
-import {useUser} from "../../Components/UserProvider";
-import {AuthoritySelect, ParameterSelect} from '../../common/Selects';
+import {useUser} from "../../components/UserProvider";
+import {AuthoritySelect, ParameterSelect} from '../../components/Selects';
 
 export default function UserEntity({url, onReload, id}) {
     const user = useUser();
