@@ -44,7 +44,6 @@ export default function Posts() {
             }
         >
             <BootstrapDataTable
-                add={"/submission/create"}
                 url="/api/submission"
                 defaultParams={params}
             >
