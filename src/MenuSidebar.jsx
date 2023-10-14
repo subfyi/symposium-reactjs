@@ -11,7 +11,7 @@ export default injectIntl(function MenuSidebar() {
             <Menu title="Home Site" to="https://iseser.com/" icon="fas fa-home"/>
         </MenuGroup>
         {user.role >= 1 && <MenuGroup title="Submission">
-            {user.role >= 1 &&
+            {user.role >= 8 &&
                 <Menu title={"Send Paper"} to={process.env.REACT_APP_PORTAL + "/submission/create"} icon="fas fa-book-open"/>}
             {user.role >= 1 && <Menu title={"My Paper"} to="/submission" icon="fas fa-book-reader"/>}
             {user.role >= 8 && <Menu title={"Deleted"} to="/submission/deleted" icon="fas fa-trash-alt"/>}
