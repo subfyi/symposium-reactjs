@@ -41,7 +41,7 @@ export default function Router() {
         {user.role >= 8 && <Route path="/subject/*" element={<Subjects/>}/>}
         {user.role >= 8 && <Route path="/roles/*" element={<RoleList/>}/>}
 
-        <Route path="*" element={<Navigate to="/profile"/>}/>
+        <Route path="*" element={<Navigate to="/submission"/>}/>
     </Routes>;
 }
 
