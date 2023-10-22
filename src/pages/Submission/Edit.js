@@ -118,6 +118,7 @@ export default function PostEntity() {
                                         value: a
                                     }))}
                                     onChange={a => setData({pap_keyword: (a && a.map(b => b.value).join('|')) || ""})}
+                                    disabled={!(user.role >= 8)}
                                 />
                             </Validator>
                         </Col>
@@ -133,6 +134,7 @@ export default function PostEntity() {
                             >
                                 <ParameterSelect
                                     type="keywordcon"
+                                    disabled={!(user.role >= 8)}
                                     value={data.topic}
                                     onChange={a => setData({topic: a})}/>
                             </Validator>
@@ -147,7 +149,7 @@ export default function PostEntity() {
                                 <ParameterSelect
                                     type="uygulamacon"
                                     value={data.parampre}
-                                    disabled={!(user.role >= 1)}
+                                    disabled={!(user.role >= 8)}
                                     onChange={a => setData({parampre: a})}
                                 />
                             </Validator>
@@ -178,6 +180,7 @@ export default function PostEntity() {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
+                                    disabled={!(user.role >= 8)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
@@ -226,6 +229,7 @@ export default function PostEntity() {
                                 <ParameterSelect
                                     type="birimcon"
                                     value={data.parampap}
+                                    disabled={!(user.role >= 8)}
                                     onChange={a => setData({parampap: a})}/>
                             </Validator>
                         </Col>
