@@ -180,6 +180,7 @@ export default function PostEntity() {
                             >
                                 <SingleFilePicker
                                     accepts=".doc,.docx"
+                                    disabled={!(user.role >= 8)}
                                     value={data.full_paper_dosya}
                                     onChange={a => setData({full_paper_dosya: a})}
                                 />
