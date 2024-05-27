@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {Button, ButtonGroup, Card, CardBody, CardHeader, Table} from 'reactstrap';
-import Moment from 'react-moment';
 import {CKEditor} from "react-admin-base-ckeditor";
 import {SingleFilePicker} from "react-admin-base-bootstrap";
 import {useUser} from "../../components/UserProvider";
+import {FormattedDate} from 'react-intl';
 
 export default function Detay({value, onSave, onChange}) {
     const [editingRow, setEditingRow] = useState();
@@ -31,7 +31,7 @@ export default function Detay({value, onSave, onChange}) {
                             <td>{(row.user && row.user.name + " " + row.user.surname) || 'You'}</td>
                             <td>{row.created_at || "Now"}</td>
                             <td>{row.updated_at || "Now"}</td>
-                            <td><Moment fromNow ago>{row.created_at}</Moment></td>
+                            <td><FormattedDate value={row.created_at}/></td>
                             <td className="d-flex flex-column">
                                 {editingRow === row ? <ButtonGroup>
                                     <Button color="primary" onClick={a => {

@@ -1,6 +1,6 @@
 # Symposium ReactJs Project
 
 ```bash
-yarn install
-yarn run dev
+bun install
+bun run dev
 ```

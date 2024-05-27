@@ -19,6 +19,9 @@
 # misc
 .DS_Store
 .env
+.env.tv
+.env.hmv
+.env.rd
 .env.local
 .env.development.local
 .env.test.local
@@ -32,3 +35,4 @@ bun.lockb
 
 package-lock.json
 .eslintcache
+.nova

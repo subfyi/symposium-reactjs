@@ -3,11 +3,11 @@ import {Route, Routes} from "react-router-dom";
 import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
 import {Breadcrumb} from "react-admin-base-falcon";
 import {Col} from "reactstrap";
-import Moment from "react-moment";
 import FileDownload from "../../components/FileDownload";
 import {useUser} from "../../components/UserProvider";
 import {YearSelect} from "../../components/Selects";
 import PostEntity from "./Edit";
+import {FormattedDate} from "react-intl";
 
 const params = {
     itemPerPage: 50,
@@ -68,7 +68,7 @@ export default function Posts() {
                         return <tr>
                             <td>{row.id}</td>
                             {user.role >= 8 && <td>{row.paper_approved == 1 ? "yes" : "no"}</td>}
-                            <td><Moment format="DD.MM.YYYY HH.mm" date={new Date(row.created_at)}/></td>
+                            <td><FormattedDate value={row.created_at}/></td>
                             <td>{row.en_title}</td>
                             <td>{row.topic && row.topic.value}</td>
                             <td>{row.parampap && row.parampap.value}</td>

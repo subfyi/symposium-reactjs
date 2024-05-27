@@ -1,8 +1,230 @@
+@import '~prismjs/themes/prism.css';
 
-header .navbar-brand-logo {
-  max-width: 100% !important;
+.recharts-tooltip-wrapper {
+  .custom-tooltip {
+    width: 200px;
+    margin: 0;
+    line-height: 24px;
+    border: 1px solid #f5f5f5;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+
+    .label {
+      margin: 0;
+      color: #666;
+      font-weight: 700;
+    }
+
+    .desc {
+      margin: 0;
+      color: #999;
+    }
+
+    .intro {
+      border-top: 1px solid #f5f5f5;
+      margin: 0;
+    }
+  }
 }
 
-.navbar-brand-logo-mini {
-  width: 100% !important;
+.dot-td {
+  display: table-cell;
+  vertical-align: middle;
+
+  > div {
+    display: flex;
+    align-items: center;
+
+    .dot {
+      display: block;
+      height: 16px;
+      width: 16px;
+      border-radius: 50%;
+      margin-right: .25em;
+
+      &.in-stock {
+        background-color: #aacb73;
+      }
+
+      &.not-in-stock {
+        background-color: #f87474;
+      }
+
+      &.backorder {
+        background-color: #FFA500;
+      }
+    }
+  }
+}
+
+.andere-select {
+  > *:not(:first-child) {
+    margin-left: 1em;
+  }
+}
+
+.custom-control {
+  z-index: inherit !important;
+}
+
+td .form-check {
+  display: inline-block;
+}
+
+.page-list {
+  .page-list-entry > div {
+    padding: 5px 0;
+    border: 1px solid #CCC;
+    margin: 5px 0;
+  }
+
+  i {
+    cursor: pointer;
+  }
+
+  .active {
+    color: red;
+  }
+}
+
+
+.header-row .modal-title {
+  display: block;
+  width: 100%;
+}
+
+.comma > span:not(:last-child)::after {
+  content: ', ';
+}
+
+.table th {
+  vertical-align: middle;
+}
+
+.chat-active {
+  color: #495057;
+  background-color: #e9ecef;
+}
+
+
+.chat-online {
+  color: #34ce57
+}
+
+.chat-offline {
+  color: #e4606d
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column-reverse !important;
+  overflow-y: scroll;
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+}
+
+.chat-message-left, .chat-message-right {
+  display: flex;
+  flex-shrink: 0
+}
+
+.chat-message-left {
+  margin-right: auto
+}
+
+.chat-message-right {
+  flex-direction: row-reverse;
+  margin-left: auto
+}
+
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+.flex-full {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+.container-fluid.p-0 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.no-gutters.row {
+  flex: 1;
+}
+
+.product-list {
+  margin: 0;
+  padding: 0;
+}
+
+.brand-image {
+  height: 40px;
+  -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+  filter: invert(100%);
+}
+
+.ck-editor__editable_inline {
+  min-height: 100px;
+}
+
+
+.min-wrap {
+  width: 1%;
+}
+
+.color {
+  width: 20px;
+  height: 20px;
+  border: solid 2px #495057;
+  vertical-align: middle;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+// extra toggle sidebar
+.extra-sidebar-toggle {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-right: 10px solid #495057;
+  color: #495057;
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 255px;
+}
+
+.extra-sidebar-toggle-closed {
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid #495057;
+  color: #495057;
+  z-index: 999;
+  position: fixed;
+  top: 50%;
+  left: 0;
 }

@@ -9,7 +9,7 @@ import Router from "./Router";
 import MenuHeader from "./MenuHeader";
 import Footer from "./Footer";
 import {UserProvider} from "./components/UserProvider";
-import UploadConfig from "./UploadConfig";
+import UploadConfig from './providers/UploadConfig';
 import languageEn from './i18n/en.json';
 import Register from "./start/Register";
 import {BrowserRouter} from 'react-router-dom';
@@ -25,20 +25,20 @@ const languages = {
 
 function BaseApp() {
     return (
-        <BrowserRouter basename={process.env.REACT_APP_PATHBASE || undefined}>
+        <BrowserRouter basename={import.meta.env.BASE_URL || undefined}>
             <App
-                id="iseser"
-                name="ISESER PORTAL"
-                endpoint={process.env.REACT_APP_ENDPOINT}
+                id={import.meta.env.VITE_ID}
+                name={import.meta.env.VITE_NAME}
+                endpoint={import.meta.env.VITE_ENDPOINT}
                 logo="/logo-light.png"
                 onlylogo="/logo.png"
             >
-                <LanguageProvider defaultLanguage="en" languages={languages}>
-                    <AuthProvider
-                        tokenEndpoint="/oauth/token"
-                        client_id="2"
-                        client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
-                    >
+                <AuthProvider
+                    tokenEndpoint="/oauth/token"
+                    client_id="2"
+                    client_secret="JjPIsb7TNCf7ysEfs0JDhl5XXBgIVh6dMRLMCrb9"
+                >
+                    <LanguageProvider defaultLanguage="en" languages={languages}>
                         <NotAuthorized>
                             <LoginRoute>
                                 <Login/>
@@ -53,7 +53,7 @@ function BaseApp() {
                         <Authorized>
                             <UserProvider>
                                 <UploadConfig>
-                                    <MainLayout bg='/bg.png' bgColor="#222">
+                                    <MainLayout>
                                         <MenuHeader/>
                                         <MenuSidebar/>
                                         <Router/>
@@ -62,8 +62,8 @@ function BaseApp() {
                                 </UploadConfig>
                             </UserProvider>
                         </Authorized>
-                    </AuthProvider>
-                </LanguageProvider>
+                    </LanguageProvider>
+                </AuthProvider>
             </App>
         </BrowserRouter>
     );

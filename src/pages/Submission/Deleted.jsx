@@ -2,9 +2,9 @@ import React, {useCallback} from 'react';
 import {Actions, ActionsColumn, BootstrapDataTable, Column, ExcelExportButton, IdColumn, useDataTableContext} from 'react-admin-base-bootstrap';
 import {Breadcrumb} from "react-admin-base-falcon";
 import {Button, Card, CardBody, FormGroup} from "reactstrap";
-import Moment from "react-moment";
 import FileDownload from "../../components/FileDownload";
 import {useAuth} from "react-admin-base";
+import {FormattedDate} from "react-intl";
 
 export function RestoreButton({url}) {
     const [api] = useAuth();
@@ -57,7 +57,7 @@ export default function List() {
                         row => {
                             return <tr>
                                 <td>{row.id}</td>
-                                <td><Moment format="DD.MM.YYYY HH.mm" date={new Date(row.created_at)}/></td>
+                                <td><FormattedDate value={row.created_at}/></td>
                                 <td>{row.en_title}</td>
                                 <td>{row.topic && row.topic.value}</td>
                                 <td>{row.parampap && row.parampap.value}</td>
