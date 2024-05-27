@@ -7,9 +7,6 @@ export default defineConfig({
     define: {
         global: 'window'
     },
-    build: {
-        outDir: 'build/admin'
-    },
     resolve: {
         dedupe: ['react-router', 'react-router-dom', 'react-intl'],
         alias: [
