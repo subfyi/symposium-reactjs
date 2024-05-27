@@ -10,7 +10,6 @@ import MenuHeader from "./MenuHeader";
 import Footer from "./Footer";
 import {UserProvider} from "./components/UserProvider";
 import UploadConfig from './providers/UploadConfig';
-import languageEn from './i18n/en.json';
 import Register from "./start/Register";
 import {BrowserRouter} from 'react-router-dom';
 
@@ -19,7 +18,7 @@ const languages = {
     en: {
         icon: 'https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/4x3/us.svg',
         name: 'English',
-        messages: languageEn
+        messages: {}
     }
 };
 
